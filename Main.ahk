@@ -10,14 +10,6 @@ Counter = 0
 Lootthreshhold = 
 
 
-
-
-
-
-
-
-
-
 gui, add, Button, x30 y200 w100 h50 gstart, Start
 gui, add, Button, x30 y200 w100 h50 gWorking, Working/STOP IT !
 Gui, Add, Text,  x20 y10 vaktuell1 w100, Kalisia:
@@ -36,9 +28,6 @@ Gui, Add, Text, r4 x250 y100, % "Loot at"
 Gui, Add, Text, x300 y100 w200 vEdit gLetter, 40
 GuiControl, hide, Working
 Gui, Add, DropDownList, x170 y30 w200 vDDL gDDL, 1||2
-
-
-
 
 
 Gui, Show,w500 h600
