@@ -18,10 +18,12 @@ F3::
 Macro1:
 Loop
 {
-Cordy1 := 20
-Cordx1 := 0
-Cordy2 := 25
-Cordx2 := 10
+
+Iniread, Cordx1, %A_workingDir%, Orehold%Buttonnumber%
+Iniread, Cordx2, %A_workingDir%, Orehold%Buttonnumber%
+Iniread, Cordy1, %A_workingDir%, Orehold%Buttonnumber%
+Iniread, Cordy2, %A_workingDir%, Orehold%Buttonnumber%
+
 1:
 Sleep, 500
 CoordMode, Pixel, Screen
@@ -44,8 +46,6 @@ If ErrorLevel = 0
 {
 Buttonoff1:
 Sleep, 500
-Button%Buttonnumber% += 1
-MsgBox, 0, , 1 Button Off found
 }
 }
 }
