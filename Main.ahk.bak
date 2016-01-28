@@ -10,7 +10,7 @@ Counter = 0
 Lootthreshhold = 
 
 
-CargoStatus:= Object ( "leer", 0, "halb voll", 1,  "fast voll", 2) 
+ 
 
 
 Class Miner {
@@ -18,23 +18,24 @@ Class Miner {
 	MinerName := "set"
 	CargoPoint1 := 
 	CargoPoint2 := 
-	CargoStatus := "leer"
+	CargoStatus:= Object ( "leer", 0, "halb voll", 1,  "fast voll", 2) 
 	
-	__New{
+	__New(minername){
+		this.MinerName := minername
 	}
 	
 	
 }
 
 
-Kalisia := new Miner
-Shiru := new Miner
-Shizzo := new Miner
-BigBoss := new Miner
-MuskelUwe := new Miner
-Sirbob := new Miner
-Maruminer1 := new Miner
-Maruminer2 := new Miner
+Kalisia := new Miner("Kalisia")
+Shiru := new Miner("Shiru")
+Shizzo := new Miner("Shizzo")
+BigBoss := new Miner("BigBoss")
+MuskelUwe := new Miner("MuskelUwe")
+Sirbob := new Miner("Sirbob2")
+Maruminer1 := new Miner("Maruminer1")
+Maruminer2 := new Miner("Maruminer2")
 
 Array := []
 Array.Insert(Kalisia)
@@ -64,7 +65,7 @@ Gui, Add, DropDownList, x270 y30 w200 vDDL gDDL, 1||2
 
 
 for index, value in Array
-	LV_Add("", value.MinerName, value.MinerStatus)
+	LV_Add("", value.MinerName, value.CargoStatus)
 
 
 
@@ -259,6 +260,10 @@ If var8 = 0
 {
 GuiControl, Text, aktuell8, Maru2: Empty
 }
+
+For index, value in Array
+	LV_Modify(index, "", value.MinerName, index)
+
 
 
 Return

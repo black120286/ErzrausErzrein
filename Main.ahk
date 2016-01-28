@@ -10,7 +10,7 @@ Counter = 0
 Lootthreshhold = 
 
 
-CargoStatus:= Object ( "leer", 0, "halb voll", 1,  "fast voll", 2) 
+ 
 
 
 Class Miner {
@@ -18,23 +18,24 @@ Class Miner {
 	MinerName := "set"
 	CargoPoint1 := 
 	CargoPoint2 := 
-	CargoStatus := "leer"
+	CargoStatus:= Object ( "leer", 0, "looting", 1,  "halb voll", 2, "fast voll", 3) 
 	
-	__New{
+	__New(minername){
+		this.MinerName := minername
 	}
 	
 	
 }
 
 
-Kalisia := new Miner
-Shiru := new Miner
-Shizzo := new Miner
-BigBoss := new Miner
-MuskelUwe := new Miner
-Sirbob := new Miner
-Maruminer1 := new Miner
-Maruminer2 := new Miner
+Kalisia := new Miner("Kalisia")
+Shiru := new Miner("Shiru")
+Shizzo := new Miner("Shizzo")
+BigBoss := new Miner("BigBoss")
+MuskelUwe := new Miner("MuskelUwe")
+Sirbob := new Miner("Sirbob2")
+Maruminer1 := new Miner("Maruminer1")
+Maruminer2 := new Miner("Maruminer2")
 
 Array := []
 Array.Insert(Kalisia)
@@ -64,7 +65,7 @@ Gui, Add, DropDownList, x270 y30 w200 vDDL gDDL, 1||2
 
 
 for index, value in Array
-	LV_Add("", value.MinerName, value.MinerStatus)
+	LV_Add("", value.MinerName, value.CargoStatus)
 
 
 
@@ -127,139 +128,8 @@ return
 
 Update:
 
-
-{
-GuiControl, Text, aktuell1, Kalisia: Halbvoll
-}
-{
-	If var1 = 2
-{
-GuiControl, Text, aktuell1, Kalisia: Almost full
-}}
-If var1 = 3
-{
-GuiControl, Text, aktuell1, Kalisia: Looting
-}
-If var2 = 1
-{
-GuiControl, Text, aktuell2, SHiru: Halbvoll
-}
-{
-	If var2 = 2
-{
-GuiControl, Text, aktuell2, SHiru: Almost full
-}}
-If var2 = 3
-{
-GuiControl, Text, aktuell2, SHiru: Looting
-}
-If var3 = 1
-{
-GuiControl, Text, aktuell3, SHizo: Halbvoll
-}
-{
-	If var3 = 2
-{
-GuiControl, Text, aktuell3, SHizo: Almost full
-}}
-If var3 = 3
-{
-GuiControl, Text, aktuell3, SHizo: Looting
-}
-If var4 = 1
-{
-GuiControl, Text, aktuell4, Ishmael: Halbvoll
-}
-{
-	If var4 = 2
-{
-GuiControl, Text, aktuell4, Ishmael Almost full
-}}
-If var4 = 3
-{
-GuiControl, Text, aktuell4, Ishmael: Looting
-}
-If var5 = 1
-{
-GuiControl, Text, aktuell5, Muskeluwe: Halbvoll
-}
-{
-	If var5 = 2
-{
-GuiControl, Text, aktuell5, Muskeluwe: Almost full
-}}
-If var5 = 3
-{
-GuiControl, Text, aktuell5, Muskeluwe: Looting
-}
-If var6 = 1
-{
-GuiControl, Text, aktuell6, Sirbob: Halbvoll
-}
-{
-	If var6 = 2
-{
-GuiControl, Text, aktuell6, Sirbob: Almost full
-}}
-If var6 = 3
-{
-GuiControl, Text, aktuell6, Sirbob: Looting
-}
-If var7 = 1
-{
-GuiControl, Text, aktuell7, Maru1: Halbvoll
-}
-{
-	If var7 = 2
-{
-GuiControl, Text, aktuell7, Maru1: Almost full
-}}
-If var7 = 3
-{
-GuiControl, Text, aktuell7, Maru1: Looting
-}
-If var8 = 1
-{
-GuiControl, Text, aktuell8, Maru2: Halbvoll
-}
-{
-	If var8 = 2
-{
-GuiControl, Text, aktuell8, Maru2: Almost full
-}}
-If var1 = 0
-{
-GuiControl, Text, aktuell1, Kalisia: Empty
-}
-If var2 = 0
-{
-GuiControl, Text, aktuell2, SHiru: Empty
-}
-If var3 = 0
-{
-GuiControl, Text, aktuell3, Shizo: Empty
-}
-If var4 = 0
-{
-GuiControl, Text, aktuell4, Ishmael: Empty
-}
-If var5 = 0
-{
-GuiControl, Text, aktuell5, Muskeluwe: Empty
-}
-If var6 = 0
-{
-GuiControl, Text, aktuell6, Sirbob: Empty
-}
-If var7 = 0
-{
-GuiControl, Text, aktuell7, Maru1: Empty
-}
-If var8 = 0
-{
-GuiControl, Text, aktuell8, Maru2: Empty
-}
-
+For index, value in Array
+	LV_Modify(index, "", value.MinerName, value.CargoStatus)
 
 Return
 
