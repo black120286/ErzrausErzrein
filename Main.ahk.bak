@@ -18,7 +18,7 @@ Class Miner {
 	MinerName := "set"
 	CargoPoint1 := 
 	CargoPoint2 := 
-	CargoStatus:= Object ( "leer", 0, "halb voll", 1,  "fast voll", 2) 
+	CargoStatus:= Object ( "leer", 0, "halb voll", 1,  "fast voll", 2, "looting", 3) 
 	
 	__New(minername){
 		this.MinerName := minername
@@ -128,143 +128,8 @@ return
 
 Update:
 
-
-{
-GuiControl, Text, aktuell1, Kalisia: Halbvoll
-}
-{
-	If var1 = 2
-{
-GuiControl, Text, aktuell1, Kalisia: Almost full
-}}
-If var1 = 3
-{
-GuiControl, Text, aktuell1, Kalisia: Looting
-}
-If var2 = 1
-{
-GuiControl, Text, aktuell2, SHiru: Halbvoll
-}
-{
-	If var2 = 2
-{
-GuiControl, Text, aktuell2, SHiru: Almost full
-}}
-If var2 = 3
-{
-GuiControl, Text, aktuell2, SHiru: Looting
-}
-If var3 = 1
-{
-GuiControl, Text, aktuell3, SHizo: Halbvoll
-}
-{
-	If var3 = 2
-{
-GuiControl, Text, aktuell3, SHizo: Almost full
-}}
-If var3 = 3
-{
-GuiControl, Text, aktuell3, SHizo: Looting
-}
-If var4 = 1
-{
-GuiControl, Text, aktuell4, Ishmael: Halbvoll
-}
-{
-	If var4 = 2
-{
-GuiControl, Text, aktuell4, Ishmael Almost full
-}}
-If var4 = 3
-{
-GuiControl, Text, aktuell4, Ishmael: Looting
-}
-If var5 = 1
-{
-GuiControl, Text, aktuell5, Muskeluwe: Halbvoll
-}
-{
-	If var5 = 2
-{
-GuiControl, Text, aktuell5, Muskeluwe: Almost full
-}}
-If var5 = 3
-{
-GuiControl, Text, aktuell5, Muskeluwe: Looting
-}
-If var6 = 1
-{
-GuiControl, Text, aktuell6, Sirbob: Halbvoll
-}
-{
-	If var6 = 2
-{
-GuiControl, Text, aktuell6, Sirbob: Almost full
-}}
-If var6 = 3
-{
-GuiControl, Text, aktuell6, Sirbob: Looting
-}
-If var7 = 1
-{
-GuiControl, Text, aktuell7, Maru1: Halbvoll
-}
-{
-	If var7 = 2
-{
-GuiControl, Text, aktuell7, Maru1: Almost full
-}}
-If var7 = 3
-{
-GuiControl, Text, aktuell7, Maru1: Looting
-}
-If var8 = 1
-{
-GuiControl, Text, aktuell8, Maru2: Halbvoll
-}
-{
-	If var8 = 2
-{
-GuiControl, Text, aktuell8, Maru2: Almost full
-}}
-If var1 = 0
-{
-GuiControl, Text, aktuell1, Kalisia: Empty
-}
-If var2 = 0
-{
-GuiControl, Text, aktuell2, SHiru: Empty
-}
-If var3 = 0
-{
-GuiControl, Text, aktuell3, Shizo: Empty
-}
-If var4 = 0
-{
-GuiControl, Text, aktuell4, Ishmael: Empty
-}
-If var5 = 0
-{
-GuiControl, Text, aktuell5, Muskeluwe: Empty
-}
-If var6 = 0
-{
-GuiControl, Text, aktuell6, Sirbob: Empty
-}
-If var7 = 0
-{
-GuiControl, Text, aktuell7, Maru1: Empty
-}
-If var8 = 0
-{
-GuiControl, Text, aktuell8, Maru2: Empty
-}
-
 For index, value in Array
-	LV_Modify(index, "", value.MinerName, index)
-
-
+	LV_Modify(index, "", value.MinerName, value.CargoStatus)
 
 Return
 
@@ -298,6 +163,8 @@ gui, submit, nohide
 GuiControl, Disable, ED
 GuiControl, Hide, Start 
 GuiControl, Show, Working
+
+
 s := 1
 var1 := 0
 Loop
@@ -305,117 +172,23 @@ Loop
 ToolTip, % ED -= 1
 If(ED > 0) || (S = 1)
 {
-1:
-Counter += 1
-Guicontrol,,Counter, %Counter%
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 0, 0, 10, 1, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{var1 := 1
-GuiControl,,Var1, %var1%
-}
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 20, 0, 30, 1, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{var1 := 2
-GuiControl,,Var1, %var1%
-}
+	
+for index, value in Array {
+	CoordMode, Pixel, Screen
+	PixelSearch, FoundX, FoundY, 0, 0, 10, 1, 0x04495D, 3, Fast RGB
+	If ErrorLevel = 0
+	{
+		Array[index].CargoStatus :=1
+	}
+	CoordMode, Pixel, Screen
+	PixelSearch, FoundX, FoundY, 20, 0, 30, 1, 0x04495D, 3, Fast RGB
+	If ErrorLevel = 0
+	{
+		Array[index].CargoStatus :=2
+	}
+	Array[index].CargoStatus := 3
+}	
 
-2:
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 0, 2, 10, 3, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-
-{var2 := 1
-GuiControl,,Var2, %var2%
-}
-
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 20, 2, 30, 3, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-
-var2 := 2
-GuiControl,,Var2, %var2%
-}
-3:
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 0, 4, 10, 5, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var3 := 1
-}
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 20, 4, 30, 5, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var3 := 2
-}
-4:
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 0, 6, 10, 7, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var4 := 1
-}
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 20, 6, 30, 7, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var4 := 2
-}
-5:
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 0, 8, 10, 9, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var5 := 1
-}
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 20, 8, 30, 9, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var5 := 2
-}
-6:
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 0, 10, 10, 11, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var6 := 1
-}
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 20, 10, 30, 11, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var6 := 2
-}
-7:
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 0, 12, 10, 13, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var7 := 1
-}
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 20, 12, 30, 13, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var7 := 2
-}
-8:
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 0, 14, 10, 15, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var8 := 1
-}
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 20, 14, 30, 15, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var8 := 2
-}
 }
 else
 {

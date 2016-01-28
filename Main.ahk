@@ -18,7 +18,7 @@ Class Miner {
 	MinerName := "set"
 	CargoPoint1 := 
 	CargoPoint2 := 
-	CargoStatus:= Object ( "leer", 0, "looting", 1,  "halb voll", 2, "fast voll", 3) 
+	CargoStatus:= Object ( "leer", 0, "halb voll", 1,  "fast voll", 2, "looting", 3) 
 	
 	__New(minername){
 		this.MinerName := minername
@@ -163,6 +163,8 @@ gui, submit, nohide
 GuiControl, Disable, ED
 GuiControl, Hide, Start 
 GuiControl, Show, Working
+
+
 s := 1
 var1 := 0
 Loop
@@ -170,117 +172,23 @@ Loop
 ToolTip, % ED -= 1
 If(ED > 0) || (S = 1)
 {
-1:
-Counter += 1
-Guicontrol,,Counter, %Counter%
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 0, 0, 10, 1, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{var1 := 1
-GuiControl,,Var1, %var1%
-}
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 20, 0, 30, 1, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{var1 := 2
-GuiControl,,Var1, %var1%
-}
+	
+for index, value in Array {
+	CoordMode, Pixel, Screen
+	PixelSearch, FoundX, FoundY, 0, 0, 10, 1, 0x04495D, 3, Fast RGB
+	If ErrorLevel = 0
+	{
+		Array[index].CargoStatus :=1
+	}
+	CoordMode, Pixel, Screen
+	PixelSearch, FoundX, FoundY, 20, 0, 30, 1, 0x04495D, 3, Fast RGB
+	If ErrorLevel = 0
+	{
+		Array[index].CargoStatus :=2
+	}
+	Array[index].CargoStatus := 3 ; ist später auszukommentieren
+}	
 
-2:
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 0, 2, 10, 3, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-
-{var2 := 1
-GuiControl,,Var2, %var2%
-}
-
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 20, 2, 30, 3, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-
-var2 := 2
-GuiControl,,Var2, %var2%
-}
-3:
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 0, 4, 10, 5, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var3 := 1
-}
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 20, 4, 30, 5, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var3 := 2
-}
-4:
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 0, 6, 10, 7, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var4 := 1
-}
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 20, 6, 30, 7, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var4 := 2
-}
-5:
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 0, 8, 10, 9, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var5 := 1
-}
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 20, 8, 30, 9, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var5 := 2
-}
-6:
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 0, 10, 10, 11, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var6 := 1
-}
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 20, 10, 30, 11, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var6 := 2
-}
-7:
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 0, 12, 10, 13, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var7 := 1
-}
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 20, 12, 30, 13, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var7 := 2
-}
-8:
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 0, 14, 10, 15, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var8 := 1
-}
-CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, 20, 14, 30, 15, 0x04495D, 3, Fast RGB
-If ErrorLevel = 0
-{
-var8 := 2
-}
 }
 else
 {
