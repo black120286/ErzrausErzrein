@@ -572,4 +572,4 @@ else
 	RunWait, Randomizirator.ahk, MMS
 	sleep, % ran(50, 150)
 
-sas234123412342134
+sas1
