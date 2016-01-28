@@ -10,7 +10,26 @@ Counter = 0
 Lootthreshhold = 
 
 
+CargoStatus:= Object ( "leer", 0, "halb voll", 1,  "fast voll", 2) 
 
+
+Class Miner {
+	Ident :=
+	Name :=
+	CargoPoint1 := 
+	CargoPoint2 := 
+	CargoStatus := 0
+}
+
+
+Kalisia := new Miner
+Shiru := new Miner
+Shizzo := new Miner
+BigBoss := new Miner
+MuskelUwe := new Miner
+Sirbob := new Miner
+Maruminer1 := new Miner
+Maruminer2 := new Miner
 
 
 
