@@ -14,42 +14,43 @@ SetKeyDelay -1
 SetMouseDelay -1
 SetBatchLines -1
 
+
+
+Iniread, Cordx1, %A_workingDir%,Settings, Orehold%Buttonnumber%
+Iniread, Cordx2, %A_workingDir%,Settings, Orehold%Buttonnumber%
+Iniread, Cordy1, %A_workingDir%,Settings, Orehold%Buttonnumber%
+Iniread, Cordy2, %A_workingDir%,Settings, Orehold%Buttonnumber%
 F3::
 Macro1:
 Loop
 {
 
-Iniread, Cordx1, %A_workingDir%, Orehold%Buttonnumber%
-Iniread, Cordx2, %A_workingDir%, Orehold%Buttonnumber%
-Iniread, Cordy1, %A_workingDir%, Orehold%Buttonnumber%
-Iniread, Cordy2, %A_workingDir%, Orehold%Buttonnumber%
 
-1:
+
+Buttonchecker:
 Sleep, 500
 CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %cordx1%, %Cordy1%, %Cordx2%, %Cordy2%, *60 C:\Users\Shiruh\Desktop\activ.png
+ImageSearch, FoundX, FoundY, %cordx1%, %Cordy1%, %Cordx2%, %Cordy2%, *60 %A_workingDir% activ.png
 If ErrorLevel
 {
-Sleep, 1000
+Sleep, 500
 CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %cordx1%, %Cordy1%, %Cordx2%, %Cordy2%, *60 C:\Users\Shiruh\Desktop\activ.png
+ImageSearch, FoundX, FoundY, %cordx1%, %Cordy1%, %Cordx2%, %Cordy2%, *60 %A_workingDir% activ.png
 If ErrorLevel
 {
 CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %cordx1%, %cordy1%, %cordx2%, %cordy2%, *50 C:\Users\Shiruh\Desktop\inactiv.png
+ImageSearch, FoundX, FoundY, %cordx1%, %cordy1%, %cordx2%, %cordy2%, *50 %A_workingDir% inactiv.png
 If ErrorLevel = 0
 {
 Sleep, 500
 CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %cordx1%, %cordy1%, %cordx2%, %cordy2%, *50 C:\Users\Shiruh\Desktop\inactiv.png
+ImageSearch, FoundX, FoundY, %cordx1%, %cordy1%, %cordx2%, %cordy2%, *50 %A_workingDir% inactiv.png
 If ErrorLevel = 0
 {
-Buttonoff1:
-Sleep, 500
+Buttonoffline:
 }
 }
 }
 }
 }
 Return
-
