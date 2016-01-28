@@ -15,10 +15,15 @@ CargoStatus:= Object ( "leer", 0, "halb voll", 1,  "fast voll", 2)
 
 Class Miner {
 	Ident :=
-	Name :=
+	MinerName := "set"
 	CargoPoint1 := 
 	CargoPoint2 := 
-	CargoStatus := 0
+	CargoStatus := "leer"
+	
+	__New{
+	}
+	
+	
 }
 
 
@@ -31,30 +36,36 @@ Sirbob := new Miner
 Maruminer1 := new Miner
 Maruminer2 := new Miner
 
+Array := []
+Array.Insert(Kalisia)
+Array.Insert(Shiru)
+Array.Insert(Shizzo)
+Array.Insert(BigBoss)
+Array.Insert(MuskelUwe)
+Array.Insert(Sirbob)
+Array.Insert(Maruminer1)
+Array.Insert(Maruminer2)
 
 
 
 
 
-
-gui, add, Button, x30 y200 w100 h50 gstart, Start
+gui, add, Button, x30 y230 w100 h50 gstart, Start
 gui, add, Button, x30 y200 w100 h50 gWorking, Working/STOP IT !
-Gui, Add, Text,  x20 y10 vaktuell1 w100, Kalisia:
-Gui, Add, Text,  x20 y30 vaktuell2 w100, SHiru:
-Gui, Add, Text,  x20 y50 vaktuell3 w100, SHizo:
-Gui, Add, Text,  x20 y70 vaktuell4 w100, Ishmael:
-Gui, Add, Text,  x20 y90 vaktuell5 w100, Muskeluwe:
-Gui, Add, Text,  x20 y110 vaktuell6 w100, Sirbob:
-Gui, Add, Text,  x20 y130 vaktuell7 w100, Maru1:
-Gui, Add, Text,  x20 y150 vaktuell8 w100, Maru2:
-Gui, add, Text, x20 y170 vCounter w100,
+Gui, Add, Listview,x10 y10 r10 w200 Grid vMyListView, MinerName|CargoStatus
 gui, add, Button, x30 y300 w100 h50 gLootnow, Lootnow
 gui, add, checkbox, x140 y230 vcheckbox1, Looting
 gui, add, checkbox, x140 y320 vcheckbox2, Loot regardsless of cargo
 Gui, Add, Text, r4 x250 y100, % "Loot at"
 Gui, Add, Text, x300 y100 w200 vEdit gLetter, 40
 GuiControl, hide, Working
-Gui, Add, DropDownList, x170 y30 w200 vDDL gDDL, 1||2
+Gui, Add, DropDownList, x270 y30 w200 vDDL gDDL, 1||2
+
+
+
+for index, value in Array
+	LV_Add("", value.MinerName, value.MinerStatus)
+
 
 
 
@@ -64,6 +75,15 @@ Gui, Show,w500 h600
 SetTimer, Update, 500
 Settimer, loottimer, 10000
 return
+
+
+
+
+
+
+
+
+
 
 
 ddl:
@@ -106,6 +126,8 @@ Letter:
 return
 
 Update:
+
+
 {
 GuiControl, Text, aktuell1, Kalisia: Halbvoll
 }
