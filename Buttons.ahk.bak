@@ -14,6 +14,7 @@ SetKeyDelay -1
 SetMouseDelay -1
 SetBatchLines -1
 
+
 F3::
 Macro1:
 Loop
@@ -44,7 +45,7 @@ If ErrorLevel = 0
 {
 Buttonoff1:
 Sleep, 500
-Button%Buttonnumber% += 1
+Button11 += 1
 MsgBox, 0, , 1 Button Off found
 }
 }
