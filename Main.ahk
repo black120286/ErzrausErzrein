@@ -86,7 +86,7 @@ For index, value in Array
 		CargoStatus := "Fast voll"
 	else if (value.CargoStatus = 3)
 		CargoStatus := "am looten"	
-	LV_Modify(index, "", value.MinerName, CargoStatus)
+	LV_Modify(index, "", value.MinerName, value.CargoStatus)
 }
 Return
 
