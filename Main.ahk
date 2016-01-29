@@ -125,16 +125,17 @@ Loop
 	
 		for index, value in Array {
 			CoordMode, Pixel, Screen
-			PixelSearch, FoundX, FoundY, value.CargoPoint1_X1, value.CargoPoint1_Y1, value.CargoPoint1_X2, value.CargoPoint1_Y2, 0x04495D, 3, Fast RGB
-			If ErrorLevel = 0
-			{
-				Array[index].CargoStatus :=1
-			}
-			CoordMode, Pixel, Screen
 			PixelSearch, FoundX, FoundY, value.CargoPoint2_X1, value.CargoPoint2_Y1, value.CargoPoint2_X2, value.CargoPoint2_Y2, 0x04495D, 3, Fast RGB
 			If ErrorLevel = 0
 			{
 				Array[index].CargoStatus :=2
+			}
+			else {
+				PixelSearch, FoundX, FoundY, value.CargoPoint1_X1, value.CargoPoint1_Y1, value.CargoPoint1_X2, value.CargoPoint1_Y2, 0x04495D, 3, Fast RGB
+				If ErrorLevel = 0
+				{
+					Array[index].CargoStatus :=1
+				}
 			}
 		}	
 	}
