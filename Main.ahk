@@ -16,8 +16,14 @@ Lootthreshhold =
 Class Miner {
 	Ident :=
 	MinerName := "set"
-	CargoPoint1 := 
-	CargoPoint2 := 
+	CargoPoint1_X1 := 
+	CargoPoint1_Y1 := 
+	CargoPoint1_X2 := 
+	CargoPoint1_Y2 := 
+	CargoPoint2_X1 := 
+	CargoPoint2_Y1 := 
+	CargoPoint2_X2 := 
+	CargoPoint2_Y2 := 
 	CargoStatus:= Object ( "leer", 0, "halb voll", 1,  "fast voll", 2, "looting", 3) 
 	
 	__New(minername){
@@ -169,34 +175,33 @@ s := 1
 var1 := 0
 Loop
 {
-ToolTip, % ED -= 1
-If(ED > 0) || (S = 1)
-{
+	ToolTip, % ED -= 1
+	If(ED > 0) || (S = 1)
+	{
 	
-for index, value in Array {
-	CoordMode, Pixel, Screen
-	PixelSearch, FoundX, FoundY, 0, 0, 10, 1, 0x04495D, 3, Fast RGB
-	If ErrorLevel = 0
-	{
-		Array[index].CargoStatus :=1
+		for index, value in Array {
+			CoordMode, Pixel, Screen
+			PixelSearch, FoundX, FoundY, value.CargoPoint1_X1, value.CargoPoint1_Y1, value.CargoPoint1_X2, value.CargoPoint1_Y2, 0x04495D, 3, Fast RGB
+			If ErrorLevel = 0
+			{
+				Array[index].CargoStatus :=1
+			}
+			CoordMode, Pixel, Screen
+			PixelSearch, FoundX, FoundY, value.CargoPoint2_X1, value.CargoPoint2_Y1, value.CargoPoint2_X2, value.CargoPoint2_Y2, 0x04495D, 3, Fast RGB
+			If ErrorLevel = 0
+			{
+				Array[index].CargoStatus :=2
+			}
+			Array[index].CargoStatus := 3 ; ist später auszukommentieren
+		}	
 	}
-	CoordMode, Pixel, Screen
-	PixelSearch, FoundX, FoundY, 20, 0, 30, 1, 0x04495D, 3, Fast RGB
-	If ErrorLevel = 0
+	else
 	{
-		Array[index].CargoStatus :=2
+		GuiControl, Enable, ED
+		GuiControl, Show, Start
+		GuiControl, hide, Working
+		break
 	}
-	Array[index].CargoStatus := 3 ; ist später auszukommentieren
-}	
-
-}
-else
-{
-GuiControl, Enable, ED
-GuiControl, Show, Start
-GuiControl, hide, Working
-break
-}
 }
 
 
