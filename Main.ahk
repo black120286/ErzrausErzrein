@@ -31,20 +31,20 @@ Class Miner {
 
 Array := []
 
-Loop , 9
+Loop , 8
 {
-	IniRead, MinerName, Settings.ini, %A_Index%, MinerName, 0
-	IniRead, CargoPoint1_X1, Settings.ini, %A_Index%, CargoPoint1_X1, 0
-	IniRead, CargoPoint1_Y1, Settings.ini, %A_Index%, CargoPoint1_Y1, 0
-	IniRead, CargoPoint1_X2, Settings.ini, %A_Index%, CargoPoint1_X2, 0
-	IniRead, CargoPoint1_Y2, Settings.ini, %A_Index%, CargoPoint1_Y2, 0
-	IniRead, CargoPoint2_X1, Settings.ini, %A_Index%, CargoPoint2_X1, 0
-	IniRead, CargoPoint2_Y1, Settings.ini, %A_Index%, CargoPoint2_Y1, 0
-	IniRead, CargoPoint2_X2, Settings.ini, %A_Index%, CargoPoint2_X2, 0
-	IniRead, CargoPoint2_Y2, Settings.ini, %A_Index%, CargoPoint2_Y2, 0
-	IniRead, ForgroundKey, Settings.ini, %A_Index%, ForgroundKey, 0
+	IniRead, g_MinerName, Settings.ini, %A_Index%, MinerName, 0
+	IniRead, g_CargoPoint1_X1, Settings.ini, %A_Index%, CargoPoint1_X1, 0
+	IniRead, g_CargoPoint1_Y1, Settings.ini, %A_Index%, CargoPoint1_Y1, 0
+	IniRead, g_CargoPoint1_X2, Settings.ini, %A_Index%, CargoPoint1_X2, 0
+	IniRead, g_CargoPoint1_Y2, Settings.ini, %A_Index%, CargoPoint1_Y2, 0
+	IniRead, g_CargoPoint2_X1, Settings.ini, %A_Index%, CargoPoint2_X1, 0
+	IniRead, g_CargoPoint2_Y1, Settings.ini, %A_Index%, CargoPoint2_Y1, 0
+	IniRead, g_CargoPoint2_X2, Settings.ini, %A_Index%, CargoPoint2_X2, 0
+	IniRead, g_CargoPoint2_Y2, Settings.ini, %A_Index%, CargoPoint2_Y2, 0
+	IniRead, g_ForgroundKey, Settings.ini, %A_Index%, ForgroundKey, 0
 
-	Array.Insert(new Miner(MinerName, CargoPoint1_X1, CargoPoint1_Y1, CargoPoint1_X2, CargoPoint1_Y2, CargoPoint2_X1, CargoPoint2_Y1, CargoPoint2_X2, CargoPoint2_Y2, ForgroundKey))
+	Array.Insert(new Miner(g_MinerName, g_CargoPoint1_X1, g_CargoPoint1_Y1, g_CargoPoint1_X2, g_CargoPoint1_Y2, g_CargoPoint2_X1, g_CargoPoint2_Y1, g_CargoPoint2_X2, g_CargoPoint2_Y2, g_ForgroundKey))
 }
 
 
@@ -127,32 +127,35 @@ s := 1
 Loop
 {
 	ToolTip, % ED -= 1
-	If(ED > 0) || (S = 1)
+	If(ED > 0) || (s = 1)
 	{
 	
 		for index, value in Array {
 			CoordMode, Pixel, Screen
-			PixelSearch, FoundX, FoundY, value.CargoPoint2_X1, value.CargoPoint2_Y1, value.CargoPoint2_X2, value.CargoPoint2_Y2, 0x004F66, 0, Fast RGB
+			x1 := value.CargoPoint2_X1
+			y1 := value.CargoPoint2_Y1
+			x2 := value.CargoPoint2_X2
+			y2 := value.CargoPoint2_Y2
+			ident := index
+			PixelSearch, FoundX, FoundY, value.CargoPoint2_X1, value.CargoPoint2_Y1, value.CargoPoint2_X2, value.CargoPoint2_Y2, 0x02495D, 10, Fast RGB
+			;MsgBox, Chargo FastVoll? Ident = %ident% x1 = %x1%  || y1 = %y1%  || x2 = %x2% || y2 = %y2% || Ergebnis = %ErrorLevel%
 			If ErrorLevel = 0
 			{
-				Array[index].CargoStatus := 2
+				Array[ident].CargoStatus := 2
 			}
-			if errorlevel =1
+			else
 			{
-				PixelSearch, FoundX, FoundY, value.CargoPoint1_X1, value.CargoPoint1_Y1, value.CargoPoint1_X2, value.CargoPoint1_Y2, 0x004F66, 0, Fast RGB
+				PixelSearch, FoundX, FoundY, value.CargoPoint1_X1, value.CargoPoint1_Y1, value.CargoPoint1_X2, value.CargoPoint1_Y2, 0x02495D, 10, Fast RGB
+				;MsgBox, Chargo Halb Voll? Ident = %ident% x1 = %x1%  || y1 = %y1%  || x2 = %x2% || y2 = %y2% || Ergebnis = %ErrorLevel%
 				If ErrorLevel = 0
 				{
-					Array[index].CargoStatus :=1
+					Array[ident].CargoStatus :=1
 				}
-			}
-						If errorlevel=1
-					{	
-						PixelSearch, FoundX, FoundY, value.CargoPoint1_X1, value.CargoPoint1_Y1, value.CargoPoint1_X2, value.CargoPoint1_Y2, 0x004F66, 0, Fast RGB
-						If ErrorLevel = 1
+				else if ErrorLevel = 1
 				{
-					Array[index].CargoStatus :=0
+					Array[ident].CargoStatus :=0
 				}
-		}	
+			}					
 	}
 	}
 	else
