@@ -10,8 +10,6 @@ Counter = 0
 Lootthreshhold = 
 
 
- 
-
 
 Class Miner {
 	Ident :=
@@ -26,32 +24,37 @@ Class Miner {
 	CargoPoint2_Y2 := 
 	CargoStatus:= Object ( "leer", 0, "halb voll", 1,  "fast voll", 2, "looting", 3) 
 	
-	__New(minername){
+	__New(minername, cargo_point1_x1, cargo_point1_y1, cargo_point1_x2, cargo_point1_y2, cargo_point2_x1, cargo_point2_y1, cargo_point2_x2, cargo_point2_y2){
 		this.MinerName := minername
-	}
-	
-	
+		this.CargoPoint1_X1 := cargo_point1_x1
+		this.CargoPoint1_Y1 := cargo_point1_y1
+		this.CargoPoint1_X2 := cargo_point1_x2
+		this.CargoPoint1_Y2 := cargo_point1_y2
+		this.CargoPoint2_X1 := cargo_point2_x1
+		this.CargoPoint2_Y1 := cargo_point2_y1
+		this.CargoPoint2_X2 := cargo_point2_x2
+		this.CargoPoint2_Y2 := cargo_point2_y2
+		
+	}		
 }
 
 
-Kalisia := new Miner("Kalisia")
-Shiru := new Miner("Shiru")
-Shizzo := new Miner("Shizzo")
-BigBoss := new Miner("BigBoss")
-MuskelUwe := new Miner("MuskelUwe")
-Sirbob := new Miner("Sirbob2")
-Maruminer1 := new Miner("Maruminer1")
-Maruminer2 := new Miner("Maruminer2")
-
 Array := []
-Array.Insert(Kalisia)
-Array.Insert(Shiru)
-Array.Insert(Shizzo)
-Array.Insert(BigBoss)
-Array.Insert(MuskelUwe)
-Array.Insert(Sirbob)
-Array.Insert(Maruminer1)
-Array.Insert(Maruminer2)
+
+Loop , 8
+{
+	IniRead, MinerName, Settings.ini, %A_Index%, MinerName, 0
+	IniRead, CargoPoint1_X1, Settings.ini, %A_Index%, CargoPoint1_X1, 0
+	IniRead, CargoPoint1_Y1, Settings.ini, %A_Index%, CargoPoint1_Y1, 0
+	IniRead, CargoPoint1_X2, Settings.ini, %A_Index%, CargoPoint1_X2, 0
+	IniRead, CargoPoint1_Y2, Settings.ini, %A_Index%, CargoPoint1_Y2, 0
+	IniRead, CargoPoint2_X1, Settings.ini, %A_Index%, CargoPoint2_X1, 0
+	IniRead, CargoPoint2_Y1, Settings.ini, %A_Index%, CargoPoint2_Y1, 0
+	IniRead, CargoPoint2_X2, Settings.ini, %A_Index%, CargoPoint2_X2, 0
+	IniRead, CargoPoint2_Y2, Settings.ini, %A_Index%, CargoPoint2_Y2, 0
+
+	Array.Insert(new Miner(MinerName, CargoPoint1_X1, CargoPoint1_Y1, CargoPoint1_X2, CargoPoint1_Y2, CargoPoint2_X1, CargoPoint2_Y1, CargoPoint2_X2, CargoPoint2_Y2))
+}
 
 
 

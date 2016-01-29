@@ -33,34 +33,64 @@ Iniread, 3Cordy2, Settings.ini, Kalisia, Button3y12
 Macro1:
 Loop
 {
+<<<<<<< HEAD
 Button1checker:
 	Sleep, 600
+=======
+
+	Button1checker:
+	Sleep, 500
+>>>>>>> origin/master
 	CoordMode, Pixel, Screen
 	ImageSearch, FoundX, FoundY, %1cordx1%, %1Cordy1%, %1Cordx2%, %1Cordy2%, *60 %A_workingDir%/activ.png
 	If ErrorLevel
 	{
+<<<<<<< HEAD
 		Sleep, 600
 		CoordMode, Pixel, Screen
 		ImageSearch, FoundX, FoundY, %1Cordx1%, %1Cordy1%, %1Cordx2%, %1Cordy2%, *60 %A_workingDir%/activ.png
+=======
+	
+		Sleep, 500
+		CoordMode, Pixel, Screen
+		ImageSearch, FoundX, FoundY, %1Cordx1%, %1Cordy1%, %1Cordx2%, %1Cordy2%, *60 %A_workingDir%/ctiv.png
+>>>>>>> origin/master
 		If ErrorLevel
 		{
 			
 			CoordMode, Pixel, Screen
+<<<<<<< HEAD
 			ImageSearch, FoundX, FoundY, %1cordx1%, %1cordy1%, %1cordx2%, %1cordy2%, *60 %A_workingDir%/inactiv.png
 			If ErrorLevel = 0
 			{
 				Sleep, 600
 				CoordMode, Pixel, Screen
 				ImageSearch, FoundX, FoundY, %1cordx1%, %1cordy1%, %1cordx2%, %1cordy2%, *60 %A_workingDir%/inactiv.png
+=======
+			ImageSearch, FoundX, FoundY, %1cordx1%, %1cordy1%, %1cordx2%, %1cordy2%, *50 %A_workingDir%/inactiv.png
+			If ErrorLevel = 0
+			{		
+				Sleep, 500
+				CoordMode, Pixel, Screen
+				ImageSearch, FoundX, FoundY, %1cordx1%, %1cordy1%, %1cordx2%, %1cordy2%, *50 %A_workingDir%/inactiv.png
+>>>>>>> origin/master
 				If ErrorLevel = 0
 				{
 					Button1offline:
+
 				}
 			}
 		}
 	}
 
+<<<<<<< HEAD
 	Sleep, 600
+=======
+
+
+	Button2Checker:
+	Sleep, 500
+>>>>>>> origin/master
 	CoordMode, Pixel, Screen
 	ImageSearch, FoundX, FoundY, %2cordx1%, %2Cordy1%, %2Cordx2%, %2Cordy2%, *60 %A_workingDir%/activ.png
 	If ErrorLevel
@@ -85,7 +115,13 @@ Button1checker:
 		}
 	}
 
+<<<<<<< HEAD
 	Sleep, 600
+=======
+
+	Button3Checker:
+	Sleep, 500
+>>>>>>> origin/master
 	CoordMode, Pixel, Screen
 	ImageSearch, FoundX, FoundY, %3cordx1%, %3Cordy1%, %3Cordx2%, %3Cordy2%, *60 %A_workingDir%/activ.png
 	If ErrorLevel
