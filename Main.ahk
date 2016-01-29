@@ -146,7 +146,6 @@ Loop
 			{
 				Array[index].CargoStatus :=2
 			}
-			Array[index].CargoStatus := 3 ; ist später auszukommentieren
 		}	
 	}
 	else
