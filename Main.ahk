@@ -5,7 +5,7 @@ Lootthreshhold =
 
 Class Miner {
 	Ident :=
-	MinerName := "set"
+	MinerName := 
 	CargoPoint1_X1 := 
 	CargoPoint1_Y1 := 
 	CargoPoint1_X2 := 
@@ -170,6 +170,7 @@ IF (checkbox1 = 1)
 			Sleep, % ran(50, 150)
 			Send, {value.ForegroundKey Up}
 			RunWait, Randomizirator.ahk, MMS
+			Array[index].CargoStatus = 0
 		}
 	}
 }
@@ -207,6 +208,7 @@ If ( checkbox2 = 0)
 			Sleep, % ran(50, 150)
 			Send, {value.ForegroundKey Up}
 			RunWait, Randomizirator.ahk, MMS
+			Array[index].CargoStatus = 0
 		}
 	}
 }
@@ -219,6 +221,7 @@ else
 		Sleep, % ran(50, 150)
 		Send, {value.ForegroundKey Up}
 		RunWait, Randomizirator.ahk, MMS
+		Array[index].CargoStatus = 0
 	}
 }
 Return

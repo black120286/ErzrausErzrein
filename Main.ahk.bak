@@ -5,7 +5,7 @@ Lootthreshhold =
 
 Class Miner {
 	Ident :=
-	MinerName := "set"
+	MinerName := 
 	CargoPoint1_X1 := 
 	CargoPoint1_Y1 := 
 	CargoPoint1_X2 := 
