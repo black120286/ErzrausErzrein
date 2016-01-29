@@ -8,7 +8,7 @@ var7 = 0
 var8 = 0
 Counter = 0
 Lootthreshhold = 
-
+Abstandlootbalken = 1
 
  
 
@@ -175,7 +175,7 @@ If(ED > 0) || (S = 1)
 	
 for index, value in Array {
 	CoordMode, Pixel, Screen
-	PixelSearch, FoundX, FoundY, 0, 0, 10, 1, 0x04495D, 3, Fast RGB
+	PixelSearch, FoundX, FoundY, %Cargoposx1%, %Cargoposy1%, %Cargoposx2%, %Cargoposy2%, 0x04495D, 3, Fast RGB
 	If ErrorLevel = 0
 	{
 		Array[index].CargoStatus :=1
@@ -187,6 +187,12 @@ for index, value in Array {
 		Array[index].CargoStatus :=2
 	}
 	Array[index].CargoStatus := 3 ; ist später auszukommentieren
+
+Cargoposy1 += %AbstandLootbalken1%
+Cargoposy2 += %AbstandLootbalken1%
+Cargopos2y1 += %Abstandlootbalken1%
+Cargopos2y2 += %Abstandlootbalken1%
+
 }	
 
 }
