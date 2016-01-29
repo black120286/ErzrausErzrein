@@ -10,8 +10,6 @@ Counter = 0
 Lootthreshhold = 
 
 
- 
-
 
 Class Miner {
 	Ident :=
@@ -24,9 +22,10 @@ Class Miner {
 	CargoPoint2_Y1 := 
 	CargoPoint2_X2 := 
 	CargoPoint2_Y2 := 
-	CargoStatus:= Object ( "leer", 0, "halb voll", 1,  "fast voll", 2, "looting", 3) 
+	CargoStatus:= Object ( "leer", 0, "halb voll", 1,  "fast voll", 2, "looting", 3)
+	ForgroundKey :=
 	
-	__New(minername, cargo_point1_x1, cargo_point1_y1, cargo_point1_x2, cargo_point1_y2, cargo_point2_x1, cargo_point2_y1, cargo_point2_x2, cargo_point2_y2){
+	__New(minername, cargo_point1_x1, cargo_point1_y1, cargo_point1_x2, cargo_point1_y2, cargo_point2_x1, cargo_point2_y1, cargo_point2_x2, cargo_point2_y2, foregroundkey){
 		this.MinerName := minername
 		this.CargoPoint1_X1 := cargo_point1_x1
 		this.CargoPoint1_Y1 := cargo_point1_y1
@@ -36,10 +35,9 @@ Class Miner {
 		this.CargoPoint2_Y1 := cargo_point2_y1
 		this.CargoPoint2_X2 := cargo_point2_x2
 		this.CargoPoint2_Y2 := cargo_point2_y2
+		this.ForgroundKey := foregroundkey
 		
-	}
-	
-	
+	}		
 }
 
 
@@ -56,12 +54,10 @@ Loop , 8
 	IniRead, CargoPoint2_Y1, Settings.ini, %A_Index%, CargoPoint2_Y1, 0
 	IniRead, CargoPoint2_X2, Settings.ini, %A_Index%, CargoPoint2_X2, 0
 	IniRead, CargoPoint2_Y2, Settings.ini, %A_Index%, CargoPoint2_Y2, 0
+	IniRead, ForgroundKey, Settings.ini, %A_Index%, ForgroundKey, 0
 
-	Array.Insert(new Miner(MinerName, CargoPoint1_X1, CargoPoint1_Y1, CargoPoint1_X2, CargoPoint1_Y2, CargoPoint2_X1, CargoPoint2_Y1, CargoPoint2_X2, CargoPoint2_Y2))
+	Array.Insert(new Miner(MinerName, CargoPoint1_X1, CargoPoint1_Y1, CargoPoint1_X2, CargoPoint1_Y2, CargoPoint2_X1, CargoPoint2_Y1, CargoPoint2_X2, CargoPoint2_Y2, ForgroundKey))
 }
-
-
-
 
 
 gui, add, Button, x30 y230 w100 h50 gstart, Start
@@ -72,8 +68,8 @@ gui, add, checkbox, x140 y230 vcheckbox1, Looting
 gui, add, checkbox, x140 y320 vcheckbox2, Loot regardsless of cargo
 Gui, Add, Text, r4 x250 y100, % "Loot at"
 Gui, Add, Text, x300 y100 w200 vEdit gLetter, 40
+gui, add, checkbox, x240 y60 vcheckbox3, Erst nach 2tem Cycle looten
 GuiControl, hide, Working
-Gui, Add, DropDownList, x270 y30 w200 vDDL gDDL, 1||2
 
 
 
@@ -81,60 +77,11 @@ for index, value in Array
 	LV_Add("", value.MinerName, value.CargoStatus)
 
 
-
-
-
-
 Gui, Show,w500 h600
 SetTimer, Update, 500
 Settimer, loottimer, 10000
 return
 
-
-
-
-
-
-
-
-
-
-
-ddl:
-
-Gui, Submit, NoHide
- if (DDL = "1")
- {       GuiControl,, Edit, 40
-    Varb1 =%Var1%
-	Varb2 =%Var2%
-	Varb3 =%Var3%
-	Varb4 =%Var4%
-	Varb5 =%Var5%
-	Varb6 =%Var6%
-	Varb7 =%Var7%
-	Varb8 =%Var8%
-}
-if (DDL = "2")
- {       GuiControl,, Edit, 50
-	
-    Varb1 =%Var1%
-	Varb2 =%Var2%
-	Varb3 =%Var3%
-	Varb4 =%Var4%
-	Varb5 =%Var5%
-	Varb6 =%Var6%
-	Varb7 =%Var7%
-	Varb8 =%Var8% 
-	Varb1 -= 1
-	Varb2 -= 1
-	Varb3 -= 1
-	Varb4 -= 1
-	Varb5 -= 1
-	Varb6 -= 1
-	Varb7 -= 1
-	Varb8 -= 1
-}
-return
 
 Letter:
 return
@@ -214,65 +161,18 @@ Loop
 
 Loottimer:
 gui, submit, nohide
-IF checkbox1 = 1
-{
-If varb1 > 0
-{
-	Send, {F3 Down}
-	Sleep, % ran(50, 150)
-	Send, {F2 Up}
-	RunWait, Randomizirator.ahk, MMS
-}
-If varb2 > 0
-{
-	Send, {F4 Down}
-	Sleep, % ran(50, 150)
-	Send, {F3 Up}
-	RunWait, Randomizirator.ahk, MMS
-
-}
-If varb3 > 0
+IF (checkbox1 = 1)
 {	
-	Send, {F5 Down}
-	Sleep, % ran(50, 150)
-	Send, {F4 Up}
-	RunWait, Randomizirator.ahk, MMS
-}
-If varb4 > 0
-{
-	Send, {F6 Down}
-	Sleep, % ran(50, 150)
-	Send, {F5 Up}
-	RunWait, Randomizirator.ahk, MMS
-}
-If varb5 > 0
-{	
-	Send, {F7 Down}
-	Sleep, % ran(50, 150)
-	Send, {F6 Up}
-	RunWait, Randomizirator.ahk, MMS
-}
-If varb6 > 0
-{	
-	Send, {F8 Down}
-	Sleep, % ran(50, 150)
-	Send, {F7 Up}
-	RunWait, Randomizirator.ahk, MMS
-}
-If varb7 > 0
-{	
-	Send, {F9 Down}
-	Sleep, % ran(50, 150)
-	Send, {F8 Up}
-	RunWait, Randomizirator.ahk, MMS
-}
-If varb8 > 0
-{	
-	Send, {F10 Down}
-	Sleep, % ran(50, 150)
-	Send, {F9 Up}
-	RunWait, Randomizirator.ahk, MMS
-}
+	for index, value in Array
+	{
+		If value.CargoStatus > 0
+		{
+			Send, {value.ForegroundKey Down}
+			Sleep, % ran(50, 150)
+			Send, {value.ForegroundKey Up}
+			RunWait, Randomizirator.ahk, MMS
+		}
+	}
 }
 Return
 
@@ -281,9 +181,7 @@ ran(min, max)
    random, ran, min, max
    return ran
  }
- 
- Return
- 
+
  
 Working:
 s := 0
@@ -302,103 +200,27 @@ GuiControl, Show, Start
 ToolTip
 If ( checkbox2 = 0)
 {
-If varb1 > 0
-{
-	Send, {F3 Down}
-	Sleep, % ran(50, 150)
-	Send, {F3 Up}
-	RunWait, Randomizirator.ahk, MMS
-}
-If varb2 > 0
-{
-	Send, {F4 Down}
-	Sleep, % ran(50, 150)
-	Send, {F4 Up}
-	RunWait, Randomizirator.ahk, MMS
+	for index, value in Array
+	{
+		If ((value.CargoStatus - checkbox3)> 0)
+		{
+			Send, {value.ForegroundKey Down}
+			Sleep, % ran(50, 150)
+			Send, {value.ForegroundKey Up}
+			RunWait, Randomizirator.ahk, MMS
+		}
 
+	}
 }
-If varb3 > 0
-{	
-	Send, {F5 Down}
-	Sleep, % ran(50, 150)
-	Send, {F5 Up}
-	RunWait, Randomizirator.ahk, MMS
-}
-If varb4 > 0
-{
-	Send, {F6 Down}
-	Sleep, % ran(50, 150)
-	Send, {F6 Up}
-	RunWait, Randomizirator.ahk, MMS
-}
-If varb5 > 0
-{	
-	Send, {F7 Down}
-	Sleep, % ran(50, 150)
-	Send, {F7 Up}
-	RunWait, Randomizirator.ahk, MMS
-}
-If varb6 > 0
-{	
-	Send, {F8 Down}
-	Sleep, % ran(50, 150)
-	Send, {F8 Up}
-	RunWait, Randomizirator.ahk, MMS
-}
-If varb7 > 0
-{	
-	Send, {F9 Down}
-	Sleep, % ran(50, 150)
-	Send, {F9 Up}
-	RunWait, Randomizirator.ahk, MMS
-}
-If varb8 > 0
-{	
-	Send, {F10 Down}
-	Sleep, % ran(50, 150)
-	Send, {F10 Up}
-	RunWait, Randomizirator.ahk, MMS
-}
-}
+
 else
-	msgbox ,,, aa
-	Send, {F3 Down}
-	Sleep, % ran(50, 150)
-	Send, {F3 Up}
-	RunWait, Randomizirator.ahk, MMS
-	sleep, % ran(50, 150)
-	Send, {F4 Down}
-	Sleep, % ran(50, 150)
-	Send, {F4 Up}
-	RunWait, Randomizirator.ahk, MMS
-	sleep, % ran(50, 150)
-	Send, {F5 Down}
-	Sleep, % ran(50, 150)
-	Send, {F5 Up}
-	RunWait, Randomizirator.ahk, MMS
-	sleep, % ran(50, 150)
-	Send, {F6 Down}
-	Sleep, % ran(50, 150)
-	Send, {F6 Up}
-	RunWait, Randomizirator.ahk, MMS
-	sleep, % ran(50, 150)
-	Send, {F7 Down}
-	Sleep, % ran(50, 150)
-	Send, {F7 Up}
-	RunWait, Randomizirator.ahk, MMS
-	sleep, % ran(50, 150)
-	Send, {F8 Down}
-	Sleep, % ran(50, 150)
-	Send, {F8 Up}
-	RunWait, Randomizirator.ahk, MMS
-	sleep, % ran(50, 150)
-	Send, {F9 Down}
-	Sleep, % ran(50, 150)
-	Send, {F9 Up}
-	RunWait, Randomizirator.ahk, MMS
-	sleep, % ran(50, 150)
-	Send, {F10 Down}
-	Sleep, % ran(50, 150)
-	Send, {F10 Up}
-	RunWait, Randomizirator.ahk, MMS
-	sleep, % ran(50, 150)
+{
+	for index, value in Array
+	{	
+		Send, {value.ForegroundKey Down}
+		Sleep, % ran(50, 150)
+		Send, {value.ForegroundKey Up}
+		RunWait, Randomizirator.ahk, MMS
+	}
+}
+Return
