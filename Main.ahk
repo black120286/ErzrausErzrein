@@ -14,7 +14,7 @@ Class Miner {
 	CargoPoint2_Y1 := 
 	CargoPoint2_X2 := 
 	CargoPoint2_Y2 := 
-	CargoStatus:= Object ( "leer", 0, "halb voll", 1,  "fast voll", 2, "looting", 3)
+	CargoStatus:= 0
 	ForgroundKey :=
 	
 	__New(minername, cargo_point1_x1, cargo_point1_y1, cargo_point1_x2, cargo_point1_y2, cargo_point2_x1, cargo_point2_y1, cargo_point2_x2, cargo_point2_y2, foregroundkey){
@@ -81,8 +81,17 @@ return
 Update:
 
 For index, value in Array
-	LV_Modify(index, "", value.MinerName, value.CargoStatus)
-
+{
+	if(value.CargoStatus = 0)
+		CargoStatus := "leer"
+	else if (value.CargoStatus = 1)
+		CargoStatus := "Halb voll"
+	else if (value.CargoStatus = 2)
+		CargoStatus := "Fast voll"
+	else if (value.CargoStatus = 3)
+		CargoStatus := "am looten"	
+	LV_Modify(index, "", value.MinerName, CargoStatus)
+}
 Return
 
 
