@@ -8,7 +8,7 @@ var7 = 0
 var8 = 0
 Counter = 0
 Lootthreshhold = 
-Abstandlootbalken = 1
+
 
  
 
@@ -32,6 +32,22 @@ Class Miner {
 	
 	
 }
+
+Loop
+{
+  IniRead, TotalCount, %A_workingDir%Settings.ini, %A_Index%, MinerName, 0
+  if TotalCount = 0
+  {
+   break
+  }
+  IniRead, MinerName, Settings.ini, %A_Index%, Channeled%A_Index%, 0
+  IniRead, CargoPoint1_X1, Settings.ini, %A_Index%, TopLeftX%A_Index%, 0
+  IniRead, CargoPoint1_Y1, Settings.ini, %A_Index%, TopLeftY%A_Index%, 0
+  IniRead, CargoPoint1_X2, Settings.ini, %A_Index%, BottomRightX%A_Index%, 0
+  IniRead, CargoPoint1_Y2, Settings.ini, %A_Index%, BottomRightY%A_Index%, 0
+
+}
+Return
 
 
 Kalisia := new Miner("Kalisia")
@@ -175,19 +191,8 @@ s := 1
 var1 := 0
 Loop
 {
-<<<<<<< HEAD
 	ToolTip, % ED -= 1
 	If(ED > 0) || (S = 1)
-=======
-ToolTip, % ED -= 1
-If(ED > 0) || (S = 1)
-{
-	
-for index, value in Array {
-	CoordMode, Pixel, Screen
-	PixelSearch, FoundX, FoundY, %Cargoposx1%, %Cargoposy1%, %Cargoposx2%, %Cargoposy2%, 0x04495D, 3, Fast RGB
-	If ErrorLevel = 0
->>>>>>> origin/master
 	{
 	
 		for index, value in Array {
@@ -213,26 +218,6 @@ for index, value in Array {
 		GuiControl, hide, Working
 		break
 	}
-<<<<<<< HEAD
-=======
-	Array[index].CargoStatus := 3 ; ist später auszukommentieren
-
-Cargoposy1 += %AbstandLootbalken1%
-Cargoposy2 += %AbstandLootbalken1%
-Cargopos2y1 += %Abstandlootbalken1%
-Cargopos2y2 += %Abstandlootbalken1%
-
-}	
-
-}
-else
-{
-GuiControl, Enable, ED
-GuiControl, Show, Start
-GuiControl, hide, Working
-break
-}
->>>>>>> origin/master
 }
 
 

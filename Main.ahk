@@ -33,6 +33,26 @@ Class Miner {
 	
 }
 
+Loop
+{
+  IniRead, TotalCount, %A_workingDir%Settings.ini, %A_Index%, MinerName, 0
+  if TotalCount = 0
+  {
+   break
+  }
+  IniRead, MinerName, Settings.ini, %A_Index%, MinerName, 0
+  IniRead, CargoPoint1_X1, Settings.ini, %A_Index%, CargoPoint1_X1, 0
+  IniRead, CargoPoint1_Y1, Settings.ini, %A_Index%, CargoPoint1_Y1, 0
+  IniRead, CargoPoint1_X2, Settings.ini, %A_Index%, CargoPoint1_X2, 0
+  IniRead, CargoPoint1_Y2, Settings.ini, %A_Index%, CargoPoint1_Y2, 0
+  IniRead, CargoPoint2_X1, Settings.ini, %A_Index%, CargoPoint2_X1, 0
+  IniRead, CargoPoint2_Y1, Settings.ini, %A_Index%, CargoPoint2_Y1, 0
+  IniRead, CargoPoint2_X2, Settings.ini, %A_Index%, CargoPoint2_X2, 0
+  IniRead, CargoPoint2_Y2, Settings.ini, %A_Index%, CargoPoint2_Y2, 0
+
+}
+Return
+
 
 Kalisia := new Miner("Kalisia")
 Shiru := new Miner("Shiru")
