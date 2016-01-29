@@ -31,7 +31,7 @@ Class Miner {
 
 Array := []
 
-Loop , 8
+Loop , 9
 {
 	IniRead, MinerName, Settings.ini, %A_Index%, MinerName, 0
 	IniRead, CargoPoint1_X1, Settings.ini, %A_Index%, CargoPoint1_X1, 0
@@ -46,6 +46,8 @@ Loop , 8
 
 	Array.Insert(new Miner(MinerName, CargoPoint1_X1, CargoPoint1_Y1, CargoPoint1_X2, CargoPoint1_Y2, CargoPoint2_X1, CargoPoint2_Y1, CargoPoint2_X2, CargoPoint2_Y2, ForgroundKey))
 }
+
+
 
 
 gui, add, Button, x30 y230 w100 h50 gstart, Start
@@ -135,14 +137,23 @@ Loop
 			{
 				Array[index].CargoStatus := 2
 			}
-			else {
+			if errorlevel =1
+			{
 				PixelSearch, FoundX, FoundY, value.CargoPoint1_X1, value.CargoPoint1_Y1, value.CargoPoint1_X2, value.CargoPoint1_Y2, 0x004F66, 0, Fast RGB
 				If ErrorLevel = 0
 				{
 					Array[index].CargoStatus :=1
 				}
 			}
+						If errorlevel=1
+					{	
+						PixelSearch, FoundX, FoundY, value.CargoPoint1_X1, value.CargoPoint1_Y1, value.CargoPoint1_X2, value.CargoPoint1_Y2, 0x004F66, 0, Fast RGB
+						If ErrorLevel = 1
+				{
+					Array[index].CargoStatus :=0
+				}
 		}	
+	}
 	}
 	else
 	{
