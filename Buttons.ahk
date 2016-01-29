@@ -36,79 +36,79 @@ Loop
 
 
 Buttonchecker:
-Sleep, 500
-CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %1cordx1%, %1Cordy1%, %1Cordx2%, %1Cordy2%, *60 %A_workingDir% activ.png
-If ErrorLevel
-{
-Sleep, 500
-CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %1Cordx1%, %1Cordy1%, %1Cordx2%, %1Cordy2%, *60 %A_workingDir% activ.png
-If ErrorLevel
-{
-CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %1cordx1%, %1cordy1%, %1cordx2%, %1cordy2%, *50 %A_workingDir% inactiv.png
-If ErrorLevel = 0
-{
-Sleep, 500
-CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %1cordx1%, %1cordy1%, %1cordx2%, %1cordy2%, *50 %A_workingDir% inactiv.png
-If ErrorLevel = 0
-{
-Button1offline:
-}
-}
-}
-}
+	Sleep, 500
+	CoordMode, Pixel, Screen
+	ImageSearch, FoundX, FoundY, %1cordx1%, %1Cordy1%, %1Cordx2%, %1Cordy2%, *60 %A_workingDir% activ.png
+	If ErrorLevel
+	{
+		Sleep, 500
+		CoordMode, Pixel, Screen
+		ImageSearch, FoundX, FoundY, %1Cordx1%, %1Cordy1%, %1Cordx2%, %1Cordy2%, *60 %A_workingDir% activ.png
+		If ErrorLevel
+		{
+			CoordMode, Pixel, Screen
+			ImageSearch, FoundX, FoundY, %1cordx1%, %1cordy1%, %1cordx2%, %1cordy2%, *50 %A_workingDir% inactiv.png
+			If ErrorLevel = 0
+			{
+				Sleep, 500
+				CoordMode, Pixel, Screen
+				ImageSearch, FoundX, FoundY, %1cordx1%, %1cordy1%, %1cordx2%, %1cordy2%, *50 %A_workingDir% inactiv.png
+				If ErrorLevel = 0
+				{
+					Button1offline:
+				}
+			}
+		}
+	}
 
-Sleep, 500
-CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %2cordx1%, %2Cordy1%, %2Cordx2%, %2Cordy2%, *60 %A_workingDir% activ.png
-If ErrorLevel
-{
-Sleep, 500
-CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %2cordx1%, %2Cordy1%, %2Cordx2%, %2Cordy2%, *60 %A_workingDir% activ.png
-If ErrorLevel
-{
-CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %2cordx1%, %2cordy1%, %2cordx2%, %2cordy2%, *50 %A_workingDir% inactiv.png
-If ErrorLevel = 0
-{
-Sleep, 500
-CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %2cordx1%, %2cordy1%, %2cordx2%, %2cordy2%, *50 %A_workingDir% inactiv.png
-If ErrorLevel = 0
-{
-Button2offline:
-}
-}
-}
-}
+	Sleep, 500
+	CoordMode, Pixel, Screen
+	ImageSearch, FoundX, FoundY, %2cordx1%, %2Cordy1%, %2Cordx2%, %2Cordy2%, *60 %A_workingDir% activ.png
+	If ErrorLevel
+	{
+		Sleep, 500
+		CoordMode, Pixel, Screen
+		ImageSearch, FoundX, FoundY, %2cordx1%, %2Cordy1%, %2Cordx2%, %2Cordy2%, *60 %A_workingDir% activ.png
+		If ErrorLevel
+		{
+			CoordMode, Pixel, Screen
+			ImageSearch, FoundX, FoundY, %2cordx1%, %2cordy1%, %2cordx2%, %2cordy2%, *50 %A_workingDir% inactiv.png
+			If ErrorLevel = 0
+			{
+				Sleep, 500
+				CoordMode, Pixel, Screen
+				ImageSearch, FoundX, FoundY, %2cordx1%, %2cordy1%, %2cordx2%, %2cordy2%, *50 %A_workingDir% inactiv.png
+				If ErrorLevel = 0
+				{
+					Button2offline:
+				}
+			}
+		}
+	}
 
-Sleep, 500
-CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %3cordx1%, %3Cordy1%, %3Cordx2%, %3Cordy2%, *60 %A_workingDir% activ.png
-If ErrorLevel
-{
-Sleep, 500
-CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %3cordx1%, %3Cordy1%, %3Cordx2%, %3Cordy2%, *60 %A_workingDir% activ.png
-If ErrorLevel
-{
-CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %3cordx1%, %3cordy1%, %3cordx2%, %3cordy2%, *50 %A_workingDir% inactiv.png
-If ErrorLevel = 0
-{
-Sleep, 500
-CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %3cordx1%, %3cordy1%, %3cordx2%, %3cordy2%, *50 %A_workingDir% inactiv.png
-If ErrorLevel = 0
-{
-Button3offline:
-}
-}
-}
-}
+	Sleep, 500
+	CoordMode, Pixel, Screen
+	ImageSearch, FoundX, FoundY, %3cordx1%, %3Cordy1%, %3Cordx2%, %3Cordy2%, *60 %A_workingDir% activ.png
+	If ErrorLevel
+	{
+		Sleep, 500
+		CoordMode, Pixel, Screen
+		ImageSearch, FoundX, FoundY, %3cordx1%, %3Cordy1%, %3Cordx2%, %3Cordy2%, *60 %A_workingDir% activ.png
+		If ErrorLevel
+		{
+			CoordMode, Pixel, Screen
+			ImageSearch, FoundX, FoundY, %3cordx1%, %3cordy1%, %3cordx2%, %3cordy2%, *50 %A_workingDir% inactiv.png
+			If ErrorLevel = 0
+			{
+				Sleep, 500
+				CoordMode, Pixel, Screen
+				ImageSearch, FoundX, FoundY, %3cordx1%, %3cordy1%, %3cordx2%, %3cordy2%, *50 %A_workingDir% inactiv.png
+				If ErrorLevel = 0
+				{
+					Button3offline:
+				}
+			}
+		}
+	}
 }
 Return
