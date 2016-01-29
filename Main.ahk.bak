@@ -61,6 +61,8 @@ Gui, Add, Text, x300 y100 w200 vEdit gLetter, 40
 gui, add, checkbox, x240 y60 vcheckbox3, Erst nach 2tem Cycle looten
 GuiControl, hide, Working
 
+Hotkey, !Home, Working
+
 
 
 for index, value in Array
