@@ -1,11 +1,3 @@
-var1 = 0
-var2 = 0
-var3 = 0
-var4 = 0
-var5 = 0
-var6 = 0
-var7 = 0
-var8 = 0
 Counter = 0
 Lootthreshhold = 
 
@@ -124,9 +116,7 @@ GuiControl, Disable, ED
 GuiControl, Hide, Start 
 GuiControl, Show, Working
 
-
 s := 1
-var1 := 0
 Loop
 {
 	ToolTip, % ED -= 1
