@@ -47,6 +47,13 @@ Loop , 8
 	Array.Insert(new Miner(g_MinerName, g_CargoPoint1_X1, g_CargoPoint1_Y1, g_CargoPoint1_X2, g_CargoPoint1_Y2, g_CargoPoint2_X1, g_CargoPoint2_Y1, g_CargoPoint2_X2, g_CargoPoint2_Y2, g_ForgroundKey))
 }
 
+MouseMovementArray := []
+
+Loop, MMS\*.*
+{
+	MouseMovementArray.Insert(A_LoopFileName)
+}
+
 
 
 
@@ -70,8 +77,8 @@ for index, value in Array
 
 
 Gui, Show,w500 h600
-SetTimer, Update, 500
-Settimer, loottimer, 10000
+;SetTimer, Update, 500
+;Settimer, Loottimer, 10000
 return
 
 
@@ -181,8 +188,8 @@ IF (checkbox1 = 1)
 			Send, {value.ForegroundKey Down}
 			Sleep, % ran(50, 150)
 			Send, {value.ForegroundKey Up}
-			RunWait, Randomizirator.ahk, MMS
-			Array[index].CargoStatus = 0
+			MouseMovement(MouseMovementArray)
+			Array[index].CargoStatus := 0
 		}
 	}
 }
@@ -219,8 +226,8 @@ If ( checkbox2 = 0)
 			Send, {value.ForegroundKey Down}
 			Sleep, % ran(50, 150)
 			Send, {value.ForegroundKey Up}
-			RunWait, Randomizirator.ahk, MMS
-			Array[index].CargoStatus = 0
+			MouseMovement(MouseMovementArray)
+			Array[index].CargoStatus := 0
 		}
 	}
 }
@@ -232,8 +239,17 @@ else
 		Send, {value.ForegroundKey Down}
 		Sleep, % ran(50, 150)
 		Send, {value.ForegroundKey Up}
-		RunWait, Randomizirator.ahk, MMS
-		Array[index].CargoStatus = 0
+		MouseMovement(MouseMovementArray)
+		Array[index].CargoStatus := 0
 	}
 }
 Return
+
+
+MouseMovement(MouseMovementArray)
+{
+	randomscript := ran(MouseMovementArray.MinIndex() ,MouseMovementArray.MaxIndex())
+	mousescript := MouseMovementArray[randomscript]
+	RunWait, %mousescript% , MMS
+	Return
+}

@@ -15,6 +15,7 @@ SetMouseDelay -1
 SetBatchLines -1
 
 
+mouse4:
 BlockInput, MouseMove
 Sleep, 109
 Click, 245, 615, 0
