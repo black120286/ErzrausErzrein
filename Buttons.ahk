@@ -14,20 +14,21 @@ SetKeyDelay -1
 SetMouseDelay -1
 SetBatchLines -1
 
+1Cordx1 = 0
 
 
-Iniread, 1Cordx1, %A_workingDir%,Settings, Kalisia, Button1x11
-Iniread, 1Cordx2, %A_workingDir%,Settings, Kalisia, Button1x12
-Iniread, 1Cordy1, %A_workingDir%,Settings, Kalisia, Button1y11
-Iniread, 1Cordy2, %A_workingDir%,Settings, Kalisia, Button1y12
-Iniread, 2Cordx1, %A_workingDir%,Settings, Kalisia, Button2x11
-Iniread, 2Cordx2, %A_workingDir%,Settings, Kalisia, Button2x12
-Iniread, 2Cordy1, %A_workingDir%,Settings, Kalisia, Button2y11
-Iniread, 2Cordy2, %A_workingDir%,Settings, Kalisia, Button2y12
-Iniread, 3Cordx1, %A_workingDir%,Settings, Kalisia, Button3x11
-Iniread, 3Cordx2, %A_workingDir%,Settings, Kalisia, Button3x12
-Iniread, 3Cordy1, %A_workingDir%,Settings, Kalisia, Button3y11
-Iniread, 3Cordy2, %A_workingDir%,Settings, Kalisia, Button3y12
+Iniread, 1Cordx1, Settings.ini, Kalisia, Button1x11
+Iniread, 1Cordx2, Settings.ini, Kalisia, Button1x12
+Iniread, 1Cordy1, Settings.ini, Kalisia, Button1y11
+Iniread, 1Cordy2, Settings.ini, Kalisia, Button1y12
+Iniread, 2Cordx1, Settings.ini, Kalisia, Button2x11
+Iniread, 2Cordx2, Settings.ini, Kalisia, Button2x12
+Iniread, 2Cordy1, Settings.ini, Kalisia, Button2y11
+Iniread, 2Cordy2, Settings.ini, Kalisia, Button2y12
+Iniread, 3Cordx1, Settings.ini, Kalisia, Button3x11
+Iniread, 3Cordx2, Settings.ini, Kalisia, Button3x12
+Iniread, 3Cordy1, Settings.ini, Kalisia, Button3y11
+Iniread, 3Cordy2, Settings.ini, Kalisia, Button3y12
 
 Macro1:
 Loop
@@ -35,6 +36,35 @@ Loop
 
 
 
+<<<<<<< HEAD
+Button1checker:
+Sleep, 500
+CoordMode, Pixel, Screen
+ImageSearch, FoundX, FoundY, %1cordx1%, %1Cordy1%, %1Cordx2%, %1Cordy2%, *60 %A_workingDir%/activ.png
+If ErrorLevel
+{
+	
+Sleep, 500
+CoordMode, Pixel, Screen
+ImageSearch, FoundX, FoundY, %1Cordx1%, %1Cordy1%, %1Cordx2%, %1Cordy2%, *60 %A_workingDir%/ctiv.png
+If ErrorLevel
+{
+CoordMode, Pixel, Screen
+ImageSearch, FoundX, FoundY, %1cordx1%, %1cordy1%, %1cordx2%, %1cordy2%, *50 %A_workingDir%/inactiv.png
+If ErrorLevel = 0
+{
+Sleep, 500
+CoordMode, Pixel, Screen
+ImageSearch, FoundX, FoundY, %1cordx1%, %1cordy1%, %1cordx2%, %1cordy2%, *50 %A_workingDir%/inactiv.png
+If ErrorLevel = 0
+{
+Button1offline:
+
+}
+}
+}
+}
+=======
 Buttonchecker:
 	Sleep, 500
 	CoordMode, Pixel, Screen
@@ -60,6 +90,7 @@ Buttonchecker:
 			}
 		}
 	}
+>>>>>>> origin/master
 
 	Sleep, 500
 	CoordMode, Pixel, Screen

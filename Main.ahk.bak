@@ -191,8 +191,31 @@ s := 1
 var1 := 0
 Loop
 {
+<<<<<<< HEAD
 	ToolTip, % ED -= 1
 	If(ED > 0) || (S = 1)
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+	ToolTip, % ED -= 1
+	If(ED > 0) || (S = 1)
+=======
+>>>>>>> origin/master
+ToolTip, % ED -= 1
+If(ED > 0) || (S = 1)
+{
+	
+for index, value in Array {
+	CoordMode, Pixel, Screen
+	PixelSearch, FoundX, FoundY, %Cargoposx1%, %Cargoposy1%, %Cargoposx2%, %Cargoposy2%, 0x04495D, 3, Fast RGB
+	If ErrorLevel = 0
+<<<<<<< HEAD
+	{
+		Array[index].CargoStatus :=1
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
 	{
 	
 		for index, value in Array {
@@ -210,14 +233,43 @@ Loop
 			}
 			Array[index].CargoStatus := 3 ; ist später auszukommentieren
 		}	
+>>>>>>> origin/master
 	}
-	else
+	CoordMode, Pixel, Screen
+	PixelSearch, FoundX, FoundY, 20, 0, 30, 1, 0x04495D, 3, Fast RGB
+	If ErrorLevel = 0
 	{
-		GuiControl, Enable, ED
-		GuiControl, Show, Start
-		GuiControl, hide, Working
-		break
+		Array[index].CargoStatus :=2
 	}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
+	Array[index].CargoStatus := 3 ; ist später auszukommentieren
+
+Cargoposy1 += %AbstandLootbalken1%
+Cargoposy2 += %AbstandLootbalken1%
+Cargopos2y1 += %Abstandlootbalken1%
+Cargopos2y2 += %Abstandlootbalken1%
+
+}	
+
+}
+else
+{
+GuiControl, Enable, ED
+GuiControl, Show, Start
+GuiControl, hide, Working
+break
+}
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
+>>>>>>> origin/master
 }
 
 
