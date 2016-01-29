@@ -61,7 +61,7 @@ Loop , 8
 
 
 gui, add, Button, x30 y230 w100 h50 gstart, Start
-gui, add, Button, x30 y200 w100 h50 gWorking, Working/STOP IT !
+gui, add, Button, x30 y230 w100 h50 gWorking, Working/STOP IT !
 Gui, Add, Listview,x10 y10 r10 w200 Grid vMyListView, MinerName|CargoStatus
 gui, add, Button, x30 y300 w100 h50 gLootnow, Lootnow
 gui, add, checkbox, x140 y230 vcheckbox1, Looting
@@ -208,7 +208,6 @@ If ( checkbox2 = 0)
 			Send, {value.ForegroundKey Up}
 			RunWait, Randomizirator.ahk, MMS
 		}
-
 	}
 }
 
