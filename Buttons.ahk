@@ -34,37 +34,35 @@ Macro1:
 Loop
 {
 
-
-
-<<<<<<< HEAD
-Button1checker:
-Sleep, 500
-CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %1cordx1%, %1Cordy1%, %1Cordx2%, %1Cordy2%, *60 %A_workingDir%/activ.png
-If ErrorLevel
-{
+	Button1checker:
+	Sleep, 500
+	CoordMode, Pixel, Screen
+	ImageSearch, FoundX, FoundY, %1cordx1%, %1Cordy1%, %1Cordx2%, %1Cordy2%, *60 %A_workingDir%/activ.png
+	If ErrorLevel
+	{
 	
-Sleep, 500
-CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %1Cordx1%, %1Cordy1%, %1Cordx2%, %1Cordy2%, *60 %A_workingDir%/ctiv.png
-If ErrorLevel
-{
-CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %1cordx1%, %1cordy1%, %1cordx2%, %1cordy2%, *50 %A_workingDir%/inactiv.png
-If ErrorLevel = 0
-{
-Sleep, 500
-CoordMode, Pixel, Screen
-ImageSearch, FoundX, FoundY, %1cordx1%, %1cordy1%, %1cordx2%, %1cordy2%, *50 %A_workingDir%/inactiv.png
-If ErrorLevel = 0
-{
-Button1offline:
+		Sleep, 500
+		CoordMode, Pixel, Screen
+		ImageSearch, FoundX, FoundY, %1Cordx1%, %1Cordy1%, %1Cordx2%, %1Cordy2%, *60 %A_workingDir%/ctiv.png
+		If ErrorLevel
+		{
+			CoordMode, Pixel, Screen
+			ImageSearch, FoundX, FoundY, %1cordx1%, %1cordy1%, %1cordx2%, %1cordy2%, *50 %A_workingDir%/inactiv.png
+			If ErrorLevel = 0
+			{		
+				Sleep, 500
+				CoordMode, Pixel, Screen
+				ImageSearch, FoundX, FoundY, %1cordx1%, %1cordy1%, %1cordx2%, %1cordy2%, *50 %A_workingDir%/inactiv.png
+				If ErrorLevel = 0
+				{
+					Button1offline:
 
+				}
+			}
+		}
+	}
 }
-}
-}
-}
-=======
+
 Buttonchecker:
 	Sleep, 500
 	CoordMode, Pixel, Screen
@@ -90,7 +88,7 @@ Buttonchecker:
 			}
 		}
 	}
->>>>>>> origin/master
+
 
 	Sleep, 500
 	CoordMode, Pixel, Screen

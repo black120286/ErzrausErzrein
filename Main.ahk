@@ -10,8 +10,6 @@ Counter = 0
 Lootthreshhold = 
 
 
- 
-
 
 Class Miner {
 	Ident :=
@@ -37,9 +35,7 @@ Class Miner {
 		this.CargoPoint2_X2 := cargo_point2_x2
 		this.CargoPoint2_Y2 := cargo_point2_y2
 		
-	}
-	
-	
+	}		
 }
 
 
