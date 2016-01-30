@@ -15,7 +15,7 @@ SetMouseDelay -1
 SetBatchLines -1
 
 
-Macro1:
+
 BlockInput, MouseMove
 Sleep, 15
 Click, 312, 628, 0
@@ -192,5 +192,5 @@ Click, 125, 623, 0
 Sleep, 265
 Click, 125, 623 Left, Up
 BlockInput, MouseMoveOff
-Return
+ExitApp
 

@@ -102,5 +102,5 @@ Click, 148, 621, 0
 Sleep, 235
 Click, 148, 621 Left, Up
 BlockInput, MouseMoveOff
-Return
+ExitApp
 
