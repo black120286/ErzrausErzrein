@@ -1,4 +1,17 @@
 ﻿; This script was created using Pulover's Macro Creator
+#NoEnv
+SetWorkingDir %A_ScriptDir%
+CoordMode, Mouse, Window
+SendMode Input
+#SingleInstance Force
+SetTitleMatchMode 2
+DetectHiddenWindows On
+#WinActivateForce
+SetControlDelay 1
+SetWinDelay 0
+SetKeyDelay -1
+SetMouseDelay -1
+SetBatchLines -1
 
 BlockInput, MouseMove
 Sleep, 110

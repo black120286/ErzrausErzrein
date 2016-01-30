@@ -11,7 +11,7 @@ Class Miner {
 	CargoPoint2_X2 := 
 	CargoPoint2_Y2 := 
 	CargoStatus:= 0
-	ForgroundKey :=
+	ForegroundKey :=
 	
 	__New(minername, cargo_point1_x1, cargo_point1_y1, cargo_point1_x2, cargo_point1_y2, cargo_point2_x1, cargo_point2_y1, cargo_point2_x2, cargo_point2_y2, foregroundkey){
 		this.MinerName := minername
@@ -23,7 +23,7 @@ Class Miner {
 		this.CargoPoint2_Y1 := cargo_point2_y1
 		this.CargoPoint2_X2 := cargo_point2_x2
 		this.CargoPoint2_Y2 := cargo_point2_y2
-		this.ForgroundKey := foregroundkey
+		this.ForegroundKey := foregroundkey
 		
 	}		
 }
@@ -42,9 +42,9 @@ Loop , 8
 	IniRead, g_CargoPoint2_Y1, Settings.ini, %A_Index%, CargoPoint2_Y1, 0
 	IniRead, g_CargoPoint2_X2, Settings.ini, %A_Index%, CargoPoint2_X2, 0
 	IniRead, g_CargoPoint2_Y2, Settings.ini, %A_Index%, CargoPoint2_Y2, 0
-	IniRead, g_ForgroundKey, Settings.ini, %A_Index%, ForgroundKey, 0
+	IniRead, g_ForegroundKey, Settings.ini, %A_Index%, ForgroundKey, 0
 
-	Array.Insert(new Miner(g_MinerName, g_CargoPoint1_X1, g_CargoPoint1_Y1, g_CargoPoint1_X2, g_CargoPoint1_Y2, g_CargoPoint2_X1, g_CargoPoint2_Y1, g_CargoPoint2_X2, g_CargoPoint2_Y2, g_ForgroundKey))
+	Array.Insert(new Miner(g_MinerName, g_CargoPoint1_X1, g_CargoPoint1_Y1, g_CargoPoint1_X2, g_CargoPoint1_Y2, g_CargoPoint2_X1, g_CargoPoint2_Y1, g_CargoPoint2_X2, g_CargoPoint2_Y2, g_ForegroundKey))
 }
 
 MouseMovementArray := []
@@ -76,7 +76,7 @@ for index, value in Array
 	LV_Add("", value.MinerName, value.CargoStatus)
 
 
-Gui, Show,w500 h600
+Gui, Show,w500 h800
 ;SetTimer, Update, 500
 ;Settimer, Loottimer, 10000
 return
@@ -235,10 +235,10 @@ If ( checkbox2 = 0)
 else
 {
 	for index, value in Array
-	{	
-		Send, {value.ForegroundKey Down}
+	{	keytopush := value.ForegroundKey
+		Send, {%keytopush% Down}
 		Sleep, % ran(50, 150)
-		Send, {value.ForegroundKey Up}
+		Send, {%keytopush% Up}
 		MouseMovement(MouseMovementArray)
 		Array[index].CargoStatus := 0
 	}
