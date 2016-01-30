@@ -134,7 +134,7 @@ GuiControl, Show, Working
 counter := 0
 s := 1
 Loop
-{	counter = %counter%+ 1
+{	counter += 1
 	ToolTip, % ED -= 1
 	If(ED > 0) || (s = 1)
 	{

@@ -87,17 +87,17 @@ Letter:
 return
 
 Update:
-For index, value in Array
+For index6, value6 in Array
 {
-	if(value.CargoStatus = 0)
+	if(value6.CargoStatus = 0)
 		CargoStatus := "leer"
-	else if (value.CargoStatus = 1)
+	else if (value6.CargoStatus = 1)
 		CargoStatus := "Halb voll"
-	else if (value.CargoStatus = 2)
+	else if (value6.CargoStatus = 2)
 		CargoStatus := "Fast voll"
-	else if (value.CargoStatus = 3)
+	else if (value6.CargoStatus = 3)
 		CargoStatus := "am looten"	
-	LV_Modify(index, "", value.MinerName, CargoStatus)
+	LV_Modify(index6, "", value6.MinerName, CargoStatus)
 }
 Return
 
@@ -139,14 +139,14 @@ Loop
 	If(ED > 0) || (s = 1)
 	{
 	
-		for index, value in Array {
+		for index5, value5 in Array {
 			CoordMode, Pixel, Screen
 			x1 := value.CargoPoint2_X1
 			y1 := value.CargoPoint2_Y1
 			x2 := value.CargoPoint2_X2
 			y2 := value.CargoPoint2_Y2
-			ident := index
-			PixelSearch, FoundX, FoundY, value.CargoPoint2_X1, value.CargoPoint2_Y1, value.CargoPoint2_X2, value.CargoPoint2_Y2, 0x02495D, 10, Fast RGB
+			ident := index5
+			PixelSearch, FoundX, FoundY, value5.CargoPoint2_X1, value5.CargoPoint2_Y1, value5.CargoPoint2_X2, value5.CargoPoint2_Y2, 0x02495D, 10, Fast RGB
 			;MsgBox, Chargo FastVoll? Ident = %ident% x1 = %x1%  || y1 = %y1%  || x2 = %x2% || y2 = %y2% || Ergebnis = %ErrorLevel%
 			If ErrorLevel = 0
 			{
@@ -154,7 +154,7 @@ Loop
 			}
 			else
 			{
-				PixelSearch, FoundX, FoundY, value.CargoPoint1_X1, value.CargoPoint1_Y1, value.CargoPoint1_X2, value.CargoPoint1_Y2, 0x02495D, 10, Fast RGB
+				PixelSearch, FoundX, FoundY, value5.CargoPoint1_X1, value5.CargoPoint1_Y1, value5.CargoPoint1_X2, value5.CargoPoint1_Y2, 0x02495D, 10, Fast RGB
 				;MsgBox, Chargo Halb Voll? Ident = %ident% x1 = %x1%  || y1 = %y1%  || x2 = %x2% || y2 = %y2% || Ergebnis = %ErrorLevel%
 				If ErrorLevel = 0
 				{
@@ -186,15 +186,15 @@ IF (checkbox1 = 1)
 {	
 	
 	sleep, % ran(2000, 8000)
-	for index, value in Array
+	for index1, value2 in Array
 	{
-		If value.CargoStatus > 0
-		{	keytopush := value.ForegroundKey
+		If value2.CargoStatus > 0
+		{	keytopush := value2.ForegroundKey
 			Send, {%keytopush% Down}
 			Sleep, % ran(50, 150)
 			Send, {%keytopush% Up}
 			MouseMovement(MouseMovementArray)
-			Array[index].CargoStatus := 0
+			Array[index1].CargoStatus := 0
 		}
 	}
 }
@@ -224,32 +224,33 @@ GuiControl, Show, Start
 ToolTip
 If ( checkbox2 = 0)
 {
-	for index, value in Array
+	for index3, value3 in Array
 	{
-		If ((value.CargoStatus - checkbox3)> 0)
+		If ((value3.CargoStatus - checkbox3)> 0)
 		{
-			keytopush := value.ForegroundKey
+			keytopush := value3.ForegroundKey
 			Send, {%keytopush% Down}
 			Sleep, % ran(50, 150)
 			Send, {%keytopush% Up}
 			MouseMovement(MouseMovementArray)
-			Array[index].CargoStatus := 0
+			Array[index3].CargoStatus := 0
 		}
 	}
 }
 
 else
 {
-	for index, value in Array
-	{	keytopush := value.ForegroundKey
+	for index4, value4 in Array
+	{	keytopush := value4.ForegroundKey
 		Send, {%keytopush% Down}
 		Sleep, % ran(50, 150)
 		Send, {%keytopush% Up}
 		CoordMode, Mouse, Relative
 		MouseMovement(MouseMovementArray)
-		Array[index].CargoStatus := 0
+		Array[index4].CargoStatus := 0
 	}
 }
+s := 1
 Return
 
 
