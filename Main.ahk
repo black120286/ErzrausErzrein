@@ -65,7 +65,9 @@ gui, add, checkbox, x140 y230 vcheckbox1, Looting
 gui, add, checkbox, x140 y320 vcheckbox2, Loot regardsless of cargo
 Gui, Add, Text, r4 x250 y100, % "Loot at"
 Gui, Add, Text, x300 y100 w200 vEdit gLetter, 40
-Gui, Add, Edit, x300 y130 w150 vEdittext, LoopCycles: 
+Gui, Add, Edit, x300 y130 w150 vEdittext, LoopCycles:
+Gui, Add, Edit, x300 y160 w150 vEdittext2, LoopCycles:
+Gui, Add, Edit, x300 y190 w150 vEdittext3, MouseScript:
 gui, add, checkbox, x240 y60 vcheckbox3, Erst nach 2tem Cycle looten
 GuiControl, hide, Working
 
@@ -79,8 +81,7 @@ for index, value in Array
 
 Gui, Show,w500 h800
 SetTimer, Update, 500
-Settimer, Loottimer, 500
-return
+Settimer, Loottimer, 1500
 
 
 Letter:
@@ -178,26 +179,38 @@ Loop
 	
 	GuiControl ,, Edittext, LoopCycles: %counter%
 }
+Return
 
 
+
+counter2 := 0
 Loottimer:
 gui, submit, nohide
+
 IF (checkbox1 = 1)
 {	
 	
-	sleep, % ran(2000, 8000)
+	
 	for index1, value2 in Array
-	{
+	{	
+		
+		Settimer, Loottimer, Off
 		If value2.CargoStatus > 0
-		{	keytopush := value2.ForegroundKey
+		{	
+			Sleep, % ran(800, 1350)
+			keytopush := value2.ForegroundKey
 			Send, {%keytopush% Down}
 			Sleep, % ran(50, 150)
 			Send, {%keytopush% Up}
 			MouseMovement(MouseMovementArray)
 			Array[index1].CargoStatus := 0
+			counter2+= 1
+			
 		}
 	}
 }
+Settimer, Loottimer, On
+GuiControl ,, Edittext2, LoopCycles: %counter2%
 Return
 
 ran(min, max)
@@ -217,7 +230,7 @@ Return
 
 
 Lootnow:
-S := 0
+s := 0
 GuiControl, Enable, ED
 GuiControl, Hide, Working
 GuiControl, Show, Start
@@ -241,11 +254,11 @@ If ( checkbox2 = 0)
 else
 {
 	for index4, value4 in Array
-	{	keytopush := value4.ForegroundKey
+	{	
+		keytopush := value4.ForegroundKey
 		Send, {%keytopush% Down}
 		Sleep, % ran(50, 150)
 		Send, {%keytopush% Up}
-		CoordMode, Mouse, Relative
 		MouseMovement(MouseMovementArray)
 		Array[index4].CargoStatus := 0
 	}
@@ -258,6 +271,7 @@ MouseMovement(MouseMovementArray)
 {
 	randomscript := ran(MouseMovementArray.MinIndex() ,MouseMovementArray.MaxIndex())
 	mousescript := MouseMovementArray[randomscript]
+	GuiControl ,, Edittext3, MousScript: %mousescript%
 	RunWait, %mousescript%, MMS
 	Return
 }
