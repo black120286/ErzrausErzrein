@@ -65,8 +65,8 @@ gui, add, checkbox, x140 y230 vcheckbox1, Looting
 gui, add, checkbox, x140 y320 vcheckbox2, Loot regardsless of cargo
 Gui, Add, Text, r4 x250 y100, % "Loot at"
 Gui, Add, Text, x300 y100 w200 vEdit gLetter, 40
-Gui, Add, Edit, x300 y130 w150 vEdittext, LoopCycles:
-Gui, Add, Edit, x300 y160 w150 vEdittext2, LoopCycles:
+Gui, Add, Edit, x300 y130 w150 vEdittext, LoopCycles-Start: 0
+Gui, Add, Edit, x300 y160 w150 vEdittext2, LOOTS !!!!: 0
 Gui, Add, Edit, x300 y190 w150 vEdittext3, MouseScript:
 gui, add, checkbox, x240 y60 vcheckbox3, Erst nach 2tem Cycle looten
 GuiControl, hide, Working
@@ -82,6 +82,8 @@ for index, value in Array
 Gui, Show,w500 h800
 SetTimer, Update, 500
 Settimer, Loottimer, 1500
+counter2 := 0
+counter := 0
 
 
 Letter:
@@ -132,7 +134,6 @@ gui, submit, nohide
 GuiControl, Disable, ED
 GuiControl, Hide, Start 
 GuiControl, Show, Working
-counter := 0
 s := 1
 Loop
 {	counter += 1
@@ -177,13 +178,13 @@ Loop
 		break
 	}
 	
-	GuiControl ,, Edittext, LoopCycles: %counter%
+	GuiControl ,, Edittext, LoopCycles-Start: %counter%
 }
 Return
 
 
 
-counter2 := 0
+
 Loottimer:
 gui, submit, nohide
 
@@ -205,13 +206,14 @@ IF (checkbox1 = 1)
 			MouseMovement(MouseMovementArray)
 			Array[index1].CargoStatus := 0
 			counter2+= 1
+			GuiControl ,, Edittext2, LOOTS !!!!: %counter2%
 			
 		}
 	}
 }
 Sleep, % ran(200, 800)
 Settimer, Loottimer, On
-GuiControl ,, Edittext2, LoopCycles: %counter2%
+
 Return
 
 ran(min, max)
@@ -249,6 +251,8 @@ If ( checkbox2 = 0)
 			Send, {%keytopush% Up}
 			MouseMovement(MouseMovementArray)
 			Array[index3].CargoStatus := 0
+			counter2+= 1
+			GuiControl ,, Edittext2, LOOTS !!!!: %counter2%
 		}
 	}
 }
@@ -264,6 +268,8 @@ else
 		Send, {%keytopush% Up}
 		MouseMovement(MouseMovementArray)
 		Array[index4].CargoStatus := 0
+		counter2+= 1
+		GuiControl ,, Edittext2, LOOTS !!!!: %counter2%
 	}
 }
 s := 1
