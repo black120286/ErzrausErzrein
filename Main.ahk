@@ -240,6 +240,7 @@ else
 		Send, {%keytopush% Down}
 		Sleep, % ran(50, 150)
 		Send, {%keytopush% Up}
+		CoordMode, Mouse, Relative
 		MouseMovement(MouseMovementArray)
 		Array[index].CargoStatus := 0
 	}
@@ -251,6 +252,6 @@ MouseMovement(MouseMovementArray)
 {
 	randomscript := ran(MouseMovementArray.MinIndex() ,MouseMovementArray.MaxIndex())
 	mousescript := MouseMovementArray[randomscript]
-	RunWait, %mousescript% , MMS
+	RunWait, %mousescript%, MMS
 	Return
 }
