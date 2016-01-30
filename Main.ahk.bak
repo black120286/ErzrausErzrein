@@ -10,7 +10,7 @@ Class Miner {
 	CargoPoint2_Y1 := 
 	CargoPoint2_X2 := 
 	CargoPoint2_Y2 := 
-	CargoStatus:= 1
+	CargoStatus:= 0
 	ForegroundKey :=
 	
 	__New(minername, cargo_point1_x1, cargo_point1_y1, cargo_point1_x2, cargo_point1_y2, cargo_point2_x1, cargo_point2_y1, cargo_point2_x2, cargo_point2_y2, foregroundkey){
@@ -81,7 +81,7 @@ for index, value in Array
 
 Gui, Show,w500 h800
 SetTimer, Update, 500
-Settimer, Loottimer, 500
+Settimer, Loottimer, 1500
 
 
 Letter:
@@ -203,7 +203,7 @@ IF (checkbox1 = 1)
 			Sleep, % ran(50, 150)
 			Send, {%keytopush% Up}
 			MouseMovement(MouseMovementArray)
-			Array[index1].CargoStatus := 1
+			Array[index1].CargoStatus := 0
 			counter2+= 1
 			
 		}

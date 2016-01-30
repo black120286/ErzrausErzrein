@@ -209,6 +209,7 @@ IF (checkbox1 = 1)
 		}
 	}
 }
+Sleep, % ran(200, 800)
 Settimer, Loottimer, On
 GuiControl ,, Edittext2, LoopCycles: %counter2%
 Return
@@ -241,6 +242,7 @@ If ( checkbox2 = 0)
 	{
 		If ((value3.CargoStatus - checkbox3)> 0)
 		{
+			Sleep, % ran(800, 1350)
 			keytopush := value3.ForegroundKey
 			Send, {%keytopush% Down}
 			Sleep, % ran(50, 150)
@@ -255,6 +257,7 @@ else
 {
 	for index4, value4 in Array
 	{	
+		Sleep, % ran(800, 1350)
 		keytopush := value4.ForegroundKey
 		Send, {%keytopush% Down}
 		Sleep, % ran(50, 150)
