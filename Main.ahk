@@ -57,10 +57,11 @@ Loop, MMS\*.*
 
 
 
-gui, add, Button, x30 y230 w100 h50 gstart, Start
-gui, add, Button, x30 y230 w100 h50 gWorking, Working/STOP IT !
+gui, add, Button, x30 y230 w100 h50 gStart, Start
+gui, add, Button, x30 y230 w100 h50 gStart2, Start Again
+gui, add, Button, x30 y300 w100 h50 gWorking, STOP IT !
 Gui, Add, Listview,x10 y10 r10 w200 Grid vMyListView, MinerName|CargoStatus
-gui, add, Button, x30 y300 w100 h50 gLootnow, Lootnow
+gui, add, Button, x30 y370 w100 h50 gLootnow, Lootnow
 gui, add, checkbox, x140 y230 vcheckbox1, Looting
 gui, add, checkbox, x140 y320 vcheckbox2, Loot regardsless of cargo
 Gui, Add, Text, r4 x250 y100, % "Loot at"
@@ -69,7 +70,7 @@ Gui, Add, Edit, x300 y130 w150 vEdittext, LoopCycles-Start: 0
 Gui, Add, Edit, x300 y160 w150 vEdittext2, LOOTS !!!!: 0
 Gui, Add, Edit, x300 y190 w150 vEdittext3, MouseScript:
 gui, add, checkbox, x240 y60 vcheckbox3, Erst nach 2tem Cycle looten
-GuiControl, hide, Working
+GuiControl, hide, Start Again
 
 Hotkey, Home, Working
 
@@ -81,7 +82,7 @@ for index, value in Array
 
 Gui, Show,w500 h800
 SetTimer, Update, 500
-Settimer, Loottimer, 1500
+Settimer, Loottimer, 3500
 counter2 := 0
 counter := 0
 
@@ -131,16 +132,14 @@ SetBatchLines -1
 
 Start:
 gui, submit, nohide
-GuiControl, Disable, ED
-GuiControl, Hide, Start 
-GuiControl, Show, Working
+GuiControl, hide, Start
+GuiControl, Show, Start Again
 s := 1
 Loop
-{	counter += 1
-	ToolTip, % ED -= 1
-	If(ED > 0) || (s = 1)
+{	
+	If(s = 1)
 	{
-	
+		counter += 1
 		for index5, value5 in Array {
 			CoordMode, Pixel, Screen
 			x1 := value.CargoPoint2_X1
@@ -168,21 +167,22 @@ Loop
 				}
 			}
 		
-	}
+		}
 	}
 	else
 	{
-		GuiControl, Enable, ED
-		GuiControl, Show, Start
-		GuiControl, hide, Working
-		break
+		
 	}
 	
 	GuiControl ,, Edittext, LoopCycles-Start: %counter%
 }
 Return
 
-
+Start2:
+GuiControl, hide, Start Again
+GuiControl, Show, Start
+s := 1
+Return
 
 
 Loottimer:
@@ -196,13 +196,14 @@ IF (checkbox1 = 1)
 	{	
 		
 		Settimer, Loottimer, Off
-		If value2.CargoStatus > 0
+		If (value2.CargoStatus- checkbox3) > 0
 		{	
-			Sleep, % ran(800, 1350)
+			Sleep, % ran(800, 2050)
 			keytopush := value2.ForegroundKey
 			Send, {%keytopush% Down}
 			Sleep, % ran(50, 150)
 			Send, {%keytopush% Up}
+			Sleep, % ran(50, 150)
 			MouseMovement(MouseMovementArray)
 			Array[index1].CargoStatus := 0
 			counter2+= 1
@@ -225,10 +226,6 @@ ran(min, max)
  
 Working:
 s := 0
-GuiControl, Enable, ED
-GuiControl, Hide, Working
-GuiControl, Show, Start
-ToolTip
 Return
 
 
@@ -241,11 +238,12 @@ If ( checkbox2 = 0)
 	{
 		If ((value3.CargoStatus - checkbox3)> 0)
 		{
-			Sleep, % ran(800, 1350)
+			Sleep, % ran(800, 2050)
 			keytopush := value3.ForegroundKey
 			Send, {%keytopush% Down}
 			Sleep, % ran(50, 150)
 			Send, {%keytopush% Up}
+			Sleep, % ran(50, 150)
 			MouseMovement(MouseMovementArray)
 			Array[index3].CargoStatus := 0
 			counter2+= 1
@@ -258,11 +256,12 @@ else
 {
 	for index4, value4 in Array
 	{	
-		Sleep, % ran(800, 1350)
+		Sleep, % ran(800, 2050)
 		keytopush := value4.ForegroundKey
 		Send, {%keytopush% Down}
 		Sleep, % ran(50, 150)
 		Send, {%keytopush% Up}
+		Sleep, % ran(50, 150)
 		MouseMovement(MouseMovementArray)
 		Array[index4].CargoStatus := 0
 		counter2+= 1
