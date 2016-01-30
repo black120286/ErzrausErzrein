@@ -21,7 +21,7 @@ Loop
 {
 Sleep, 500
 CoordMode, Pixel, Screen
-PixelSearch, FoundX, FoundY, %BumsdeOverview_x1%, %BumsdeOverview_y1%, %BumsdeOverview_x2%, %BumsdeOverview_y2%, 0xCE1616, 5, Fast RGB
+PixelSearch, FoundX, FoundY, %BumsdeOverview_x1%, %BumsdeOverview_y1%, %BumsdeOverview_x2, %BumsdeOverview_y2%, 0xCE1616, 5, Fast RGB
 If ErrorLevel = 0
 {
 MsgBox, 0, , Mate! die ratten müssen gebasht werden!

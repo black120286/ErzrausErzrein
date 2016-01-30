@@ -22,6 +22,7 @@ Hpchecker:
 CoordMode, Pixel, Screen
 PixelSearch, FoundX, FoundY, 1553, 1730, 1560, 1736, 0xD01818, 20, Fast RGB
 If ErrorLevel = 0
+	SoundBeep
 CoordMode, Pixel, Screen
 PixelSearch, FoundX, FoundY, 1703, 1730, 1710, 1736, 0xD01818, 20, Fast RGB
 CoordMode, Pixel, Screen
@@ -38,6 +39,7 @@ CoordMode, Pixel, Screen
 PixelSearch, FoundX, FoundY, 2003, 1880, 2010, 1886, 0xD01818, 20, Fast RGB
 If ErrorLevel = 0
 {
+MsgBox, 0, , mate ! der busch brennt ! 
 }
 }
 Return
