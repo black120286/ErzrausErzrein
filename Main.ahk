@@ -77,8 +77,8 @@ for index, value in Array
 
 
 Gui, Show,w500 h800
-SetTimer, Update, 500
-Settimer, Loottimer, 10000
+;SetTimer, Update, 500
+;Settimer, Loottimer, 10000
 return
 
 

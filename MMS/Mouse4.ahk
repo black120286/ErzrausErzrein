@@ -13,8 +13,8 @@ SetKeyDelay -1
 SetMouseDelay -1
 SetBatchLines -1
 
+CoordMode, Mouse, Relative
 
-Macro1:
 BlockInput, MouseMove
 Sleep, 109
 Click, 245, 615, 0

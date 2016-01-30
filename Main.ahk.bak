@@ -251,6 +251,6 @@ MouseMovement(MouseMovementArray)
 {
 	randomscript := ran(MouseMovementArray.MinIndex() ,MouseMovementArray.MaxIndex())
 	mousescript := MouseMovementArray[randomscript]
-	RunWait, %mousescript% , MMS
+	RunWait, %mousescript%
 	Return
 }
