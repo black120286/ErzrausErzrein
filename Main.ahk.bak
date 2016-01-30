@@ -65,8 +65,8 @@ gui, add, checkbox, x140 y230 vcheckbox1, Looting
 gui, add, checkbox, x140 y320 vcheckbox2, Loot regardsless of cargo
 Gui, Add, Text, r4 x250 y100, % "Loot at"
 Gui, Add, Text, x300 y100 w200 vEdit gLetter, 40
-Gui, Add, Edit, x300 y130 w150 vEdittext, LoopCycles-Start:
-Gui, Add, Edit, x300 y160 w150 vEdittext2, LoopCycles:
+Gui, Add, Edit, x300 y130 w150 vEdittext, LoopCycles-Start: 0
+Gui, Add, Edit, x300 y160 w150 vEdittext2, LOOTS !!!!: 0
 Gui, Add, Edit, x300 y190 w150 vEdittext3, MouseScript:
 gui, add, checkbox, x240 y60 vcheckbox3, Erst nach 2tem Cycle looten
 GuiControl, hide, Working

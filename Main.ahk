@@ -234,6 +234,7 @@ Return
 
 Lootnow:
 s := 0
+Settimer, Loottimer, Off
 GuiControl, Enable, ED
 GuiControl, Hide, Working
 GuiControl, Show, Start
@@ -273,6 +274,7 @@ else
 	}
 }
 s := 1
+Settimer, Loottimer, On
 Return
 
 
