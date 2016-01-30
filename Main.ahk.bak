@@ -65,6 +65,7 @@ gui, add, checkbox, x140 y230 vcheckbox1, Looting
 gui, add, checkbox, x140 y320 vcheckbox2, Loot regardsless of cargo
 Gui, Add, Text, r4 x250 y100, % "Loot at"
 Gui, Add, Text, x300 y100 w200 vEdit gLetter, 40
+Gui, Add, Edit, x300 y130 w150 vEdittext, LoopCycles: 
 gui, add, checkbox, x240 y60 vcheckbox3, Erst nach 2tem Cycle looten
 GuiControl, hide, Working
 
@@ -78,7 +79,7 @@ for index, value in Array
 
 Gui, Show,w500 h800
 SetTimer, Update, 500
-Settimer, Loottimer, ran(2000, 8000)
+Settimer, Loottimer, 500
 return
 
 
@@ -86,7 +87,6 @@ Letter:
 return
 
 Update:
-
 For index, value in Array
 {
 	if(value.CargoStatus = 0)
@@ -131,10 +131,10 @@ gui, submit, nohide
 GuiControl, Disable, ED
 GuiControl, Hide, Start 
 GuiControl, Show, Working
-
+counter := 0
 s := 1
 Loop
-{
+{	counter = %counter%+ 1
 	ToolTip, % ED -= 1
 	If(ED > 0) || (s = 1)
 	{
@@ -164,7 +164,8 @@ Loop
 				{
 					Array[ident].CargoStatus :=0
 				}
-			}					
+			}
+		
 	}
 	}
 	else
@@ -174,6 +175,8 @@ Loop
 		GuiControl, hide, Working
 		break
 	}
+	
+	GuiControl ,, Edittext, LoopCycles: %counter%
 }
 
 
@@ -181,6 +184,8 @@ Loottimer:
 gui, submit, nohide
 IF (checkbox1 = 1)
 {	
+	
+	sleep, % ran(2000, 8000)
 	for index, value in Array
 	{
 		If value.CargoStatus > 0
