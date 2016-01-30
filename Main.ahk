@@ -235,10 +235,6 @@ Return
 Lootnow:
 s := 0
 Settimer, Loottimer, Off
-GuiControl, Enable, ED
-GuiControl, Hide, Working
-GuiControl, Show, Start
-ToolTip
 If ( checkbox2 = 0)
 {
 	for index3, value3 in Array
