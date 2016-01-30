@@ -77,8 +77,8 @@ for index, value in Array
 
 
 Gui, Show,w500 h800
-;SetTimer, Update, 500
-;Settimer, Loottimer, 10000
+SetTimer, Update, 500
+Settimer, Loottimer, 500
 return
 
 
@@ -181,6 +181,8 @@ Loottimer:
 gui, submit, nohide
 IF (checkbox1 = 1)
 {	
+	
+	sleep, % ran(2000, 8000)
 	for index, value in Array
 	{
 		If value.CargoStatus > 0
