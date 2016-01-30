@@ -179,8 +179,6 @@ Loop
 Return
 
 Start2:
-GuiControl, hide, Start Again
-GuiControl, Show, Start
 s := 1
 Return
 
