@@ -1,4 +1,5 @@
 ﻿; This script was created using Pulover's Macro Creator
+
 #NoEnv
 SetWorkingDir %A_ScriptDir%
 CoordMode, Mouse, Window
@@ -13,184 +14,176 @@ SetKeyDelay -1
 SetMouseDelay -1
 SetBatchLines -1
 
-CoordMode, Mouse, Relative
 
+Macro1:
 BlockInput, MouseMove
-Sleep, 406
-Click, 306, 594, 0
-Sleep, 969
-Click, 305, 594, 0
-Click, 303, 596, 0
+Sleep, 266
+Click, 343, 627, 0
+Click, 343, 626, 0
 Sleep, 16
-Click, 302, 596, 0
-Click, 301, 596, 0
+Click, 343, 623, 0
 Sleep, 15
-Click, 292, 597, 0
-Click, 290, 597, 0
+Click, 344, 620, 0
 Sleep, 16
-Click, 287, 598, 0
-Click, 286, 599, 0
-Click, 285, 599, 0
-Click, 284, 599, 0
+Click, 343, 620, 0
 Sleep, 16
-Click, 275, 600, 0
-Click, 274, 600, 0
-Click, 273, 601, 0
+Click, 342, 619, 0
+Click, 340, 619, 0
+Click, 339, 619, 0
 Sleep, 15
-Click, 268, 602, 0
-Click, 267, 603, 0
+Click, 331, 616, 0
+Click, 329, 616, 0
+Sleep, 16
+Click, 318, 612, 0
+Click, 314, 611, 0
+Sleep, 15
+Click, 307, 607, 0
+Click, 305, 606, 0
+Sleep, 16
+Click, 303, 605, 0
+Click, 301, 605, 0
+Click, 300, 605, 0
+Click, 299, 605, 0
+Click, 299, 604, 0
+Sleep, 16
+Click, 296, 603, 0
+Click, 295, 603, 0
+Sleep, 15
+Click, 290, 602, 0
+Sleep, 16
+Click, 286, 601, 0
+Sleep, 16
+Click, 285, 601, 0
+Sleep, 15
+Click, 284, 601, 0
+Sleep, 16
+Click, 283, 602, 0
+Click, 282, 602, 0
 Sleep, 31
-Click, 261, 604, 0
-Click, 260, 605, 0
+Click, 280, 604, 0
 Sleep, 16
-Click, 255, 606, 0
-Sleep, 16
-Click, 254, 608, 0
+Click, 279, 606, 0
+Click, 278, 606, 0
 Sleep, 15
-Click, 249, 611, 0
-Click, 248, 611, 0
+Click, 278, 607, 0
+Click, 277, 607, 0
 Sleep, 16
-Click, 246, 611, 0
-Click, 246, 612, 0
+Click, 269, 610, 0
+Click, 268, 610, 0
 Sleep, 16
-Click, 241, 613, 0
-Click, 240, 613, 0
+Click, 262, 611, 0
+Click, 260, 611, 0
+Click, 259, 611, 0
+Click, 258, 611, 0
 Sleep, 15
-Click, 239, 613, 0
-Click, 238, 613, 0
+Click, 252, 612, 0
+Click, 249, 612, 0
+Click, 247, 612, 0
 Sleep, 16
-Click, 237, 614, 0
-Click, 235, 614, 0
-Sleep, 15
-Click, 234, 615, 0
-Sleep, 16
-Click, 233, 615, 0
-Sleep, 31
-Click, 232, 616, 0
-Sleep, 16
+Click, 232, 615, 0
 Click, 230, 616, 0
-Sleep, 16
-Click, 229, 617, 0
 Sleep, 15
-Click, 226, 618, 0
+Click, 225, 617, 0
 Sleep, 16
-Click, 225, 619, 0
+Click, 222, 617, 0
+Sleep, 63
+Click, 221, 617, 0
+Click, 220, 617, 0
 Sleep, 15
-Click, 222, 620, 0
+Click, 217, 616, 0
+Click, 216, 616, 0
 Sleep, 16
-Click, 222, 621, 0
-Click, 221, 621, 0
-Click, 220, 620, 0
-Sleep, 31
-Click, 218, 620, 0
-Sleep, 657
-Click, 218, 620 Left, Down
-Sleep, 296
-Click, 217, 620, 0
+Click, 215, 615, 0
+Sleep, 62
+Click, 215, 615 Left, Down
+Sleep, 125
+Click, 209, 616, 0
+Click, 208, 617, 0
 Sleep, 16
-Click, 213, 620, 0
-Click, 212, 620, 0
+Click, 201, 620, 0
+Click, 200, 621, 0
+Click, 199, 621, 0
+Click, 198, 622, 0
 Sleep, 16
-Click, 210, 620, 0
+Click, 196, 622, 0
+Click, 196, 620, 0
 Sleep, 15
-Click, 206, 621, 0
-Sleep, 16
-Click, 201, 622, 0
-Click, 200, 622, 0
-Sleep, 16
-Click, 196, 623, 0
-Click, 195, 623, 0
-Sleep, 15
-Click, 191, 623, 0
 Click, 190, 623, 0
+Click, 189, 623, 0
 Sleep, 16
 Click, 188, 623, 0
 Click, 187, 623, 0
 Sleep, 15
-Click, 184, 623, 0
-Sleep, 16
-Click, 181, 623, 0
-Sleep, 16
-Click, 180, 623, 0
-Sleep, 15
-Click, 177, 623, 0
-Sleep, 16
-Click, 176, 623, 0
-Sleep, 16
-Click, 175, 623, 0
-Sleep, 15
-Click, 172, 623, 0
-Sleep, 16
-Click, 168, 623, 0
-Click, 167, 623, 0
-Sleep, 15
-Click, 166, 623, 0
-Sleep, 16
-Click, 163, 624, 0
-Sleep, 16
-Click, 160, 625, 0
-Click, 159, 625, 0
-Sleep, 15
-Click, 158, 625, 0
-Click, 157, 625, 0
-Sleep, 16
-Click, 153, 626, 0
-Click, 152, 626, 0
-Sleep, 16
-Click, 151, 626, 0
-Sleep, 15
-Click, 148, 627, 0
-Sleep, 16
-Click, 146, 627, 0
-Sleep, 15
-Click, 144, 627, 0
-Sleep, 16
-Click, 142, 627, 0
-Sleep, 16
-Click, 139, 627, 0
-Sleep, 15
-Click, 137, 627, 0
-Click, 136, 627, 0
-Sleep, 16
-Click, 134, 627, 0
-Click, 133, 627, 0
-Sleep, 16
-Click, 130, 627, 0
-Sleep, 15
-Click, 129, 627, 0
-Click, 128, 627, 0
-Sleep, 16
-Click, 126, 627, 0
-Sleep, 15
-Click, 125, 627, 0
-Sleep, 16
-Click, 122, 627, 0
-Sleep, 31
-Click, 120, 627, 0
-Sleep, 16
-Click, 119, 627, 0
-Sleep, 16
-Click, 118, 627, 0
-Sleep, 31
-Click, 117, 627, 0
-Click, 116, 627, 0
-Sleep, 15
-Click, 115, 627, 0
-Click, 114, 627, 0
-Sleep, 16
-Click, 113, 627, 0
-Sleep, 16
-Click, 112, 627, 0
-Sleep, 15
-Click, 110, 627, 0
+Click, 185, 624, 0
+Click, 184, 625, 0
 Sleep, 32
-Click, 107, 627, 0
-Sleep, 15
-Click, 105, 627, 0
+Click, 182, 625, 0
 Sleep, 31
-Click, 103, 627, 0
-Sleep, 407
-Click, 103, 627 Left, Up
+Click, 179, 626, 0
+Click, 178, 626, 0
+Sleep, 16
+Click, 176, 626, 0
+Click, 175, 626, 0
+Click, 174, 626, 0
+Sleep, 15
+Click, 172, 626, 0
+Sleep, 16
+Click, 165, 627, 0
+Sleep, 15
+Click, 161, 628, 0
+Sleep, 16
+Click, 159, 628, 0
+Sleep, 16
+Click, 156, 628, 0
+Sleep, 15
+Click, 153, 629, 0
+Click, 152, 629, 0
+Sleep, 16
+Click, 151, 629, 0
+Sleep, 31
+Click, 150, 630, 0
+Sleep, 16
+Click, 148, 631, 0
+Sleep, 15
+Click, 147, 631, 0
+Sleep, 16
+Click, 145, 631, 0
+Click, 144, 631, 0
+Sleep, 16
+Click, 141, 632, 0
+Click, 140, 632, 0
+Sleep, 15
+Click, 139, 632, 0
+Sleep, 16
+Click, 136, 633, 0
+Click, 135, 633, 0
+Sleep, 16
+Click, 134, 633, 0
+Click, 133, 633, 0
+Sleep, 15
+Click, 129, 634, 0
+Sleep, 16
+Click, 127, 634, 0
+Sleep, 15
+Click, 126, 634, 0
+Sleep, 79
+Click, 125, 634, 0
+Sleep, 93
+Click, 124, 634, 0
+Sleep, 16
+Click, 123, 633, 0
+Sleep, 47
+Click, 122, 632, 0
+Sleep, 47
+Click, 120, 631, 0
+Sleep, 31
+Click, 119, 631, 0
+Sleep, 31
+Click, 118, 630, 0
+Sleep, 16
+Click, 118, 629, 0
+Sleep, 140
+Click, 118, 629 Left, Up
 BlockInput, MouseMoveOff
-ExitApp
+Return
 
