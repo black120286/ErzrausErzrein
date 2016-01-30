@@ -15,7 +15,7 @@ SetMouseDelay -1
 SetBatchLines -1
 
 
-F3::
+
 Macro1:
 Sleep, 297
 Click, 222, 637 Left, Down

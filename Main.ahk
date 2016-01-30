@@ -77,8 +77,8 @@ for index, value in Array
 
 
 Gui, Show,w500 h800
-;SetTimer, Update, 500
-;Settimer, Loottimer, 10000
+SetTimer, Update, 500
+Settimer, Loottimer, 10000
 return
 
 
@@ -184,10 +184,10 @@ IF (checkbox1 = 1)
 	for index, value in Array
 	{
 		If value.CargoStatus > 0
-		{
-			Send, {value.ForegroundKey Down}
+		{	keytopush := value.ForegroundKey
+			Send, {%keytopush% Down}
 			Sleep, % ran(50, 150)
-			Send, {value.ForegroundKey Up}
+			Send, {%keytopush% Up}
 			MouseMovement(MouseMovementArray)
 			Array[index].CargoStatus := 0
 		}
@@ -223,9 +223,10 @@ If ( checkbox2 = 0)
 	{
 		If ((value.CargoStatus - checkbox3)> 0)
 		{
-			Send, {value.ForegroundKey Down}
+			keytopush := value.ForegroundKey
+			Send, {%keytopush% Down}
 			Sleep, % ran(50, 150)
-			Send, {value.ForegroundKey Up}
+			Send, {%keytopush% Up}
 			MouseMovement(MouseMovementArray)
 			Array[index].CargoStatus := 0
 		}
