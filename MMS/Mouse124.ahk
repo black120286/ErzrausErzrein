@@ -105,7 +105,6 @@ Click, 2146, 704, 0
 Sleep, 15
 Click, 2145, 705, 0
 Sleep, 391
-WinActivate, Kalisia ahk_class triuiScreen
 Click, 179, 634 Left, Down
 Sleep, 16
 Click, 178, 635, 0

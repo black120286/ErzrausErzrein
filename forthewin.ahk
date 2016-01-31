@@ -76,6 +76,7 @@ Hotkey, Home, Working
 
 
 
+
 for index, value in Array
 	LV_Add("", value.MinerName, value.CargoStatus)
 
@@ -85,6 +86,12 @@ SetTimer, Update, 500
 Settimer, Loottimer, 3500
 counter2 := 0
 counter := 0
+
+
+
+
+Up::GuiControl, , checkbox1, 1
+Down::GuiControl, , checkbox1, 0
 
 
 Letter:
