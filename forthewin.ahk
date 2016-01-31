@@ -203,17 +203,19 @@ IF (checkbox1 = 1)
 		Settimer, Loottimer, Off
 		If (value2.CargoStatus- checkbox3) > 0
 		{	
-			Sleep, % ran(800, 2050)
-			keytopush := value2.ForegroundKey
-			Send, {%keytopush% Down}
-			Sleep, % ran(50, 150)
-			Send, {%keytopush% Up}
-			Sleep, % ran(50, 150)
-			MouseMovement(MouseMovementArray)
-			Array[index1].CargoStatus := 0
-			counter2+= 1
-			GuiControl ,, Edittext2, LOOTS !!!!: %counter2%
-			
+			if(checkbox1 = 1)
+			{
+				Sleep, % ran(800, 2050)
+				keytopush := value2.ForegroundKey
+				Send, {%keytopush% Down}
+				Sleep, % ran(50, 150)
+				Send, {%keytopush% Up}
+				Sleep, % ran(50, 150)
+				MouseMovement(MouseMovementArray)
+				Array[index1].CargoStatus := 0
+				counter2+= 1
+				GuiControl ,, Edittext2, LOOTS !!!!: %counter2%
+			}
 		}
 	}
 }

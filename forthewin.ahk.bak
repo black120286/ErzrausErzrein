@@ -90,8 +90,8 @@ counter := 0
 
 
 
-o::GuiControl, , checkbox1, 1
-
+Up::GuiControl, , checkbox1, 1
+Down::GuiControl, , checkbox1, 0
 
 
 Letter:
