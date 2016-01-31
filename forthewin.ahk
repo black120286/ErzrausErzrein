@@ -73,7 +73,8 @@ gui, add, checkbox, x240 y60 vcheckbox3, Erst nach 2tem Cycle looten
 GuiControl, hide, Start Again
 
 Hotkey, Home, Working
-
+FormatTime, TimeString2
+FileAppend, -------  New Session started: %TimeString2% ------- `n, MinerLog.txt
 
 
 
@@ -117,7 +118,7 @@ Return
 GuiClose:
 ExitApp
 
-esc::exitapp
+Left::exitapp
 
 #NoEnv
 SetWorkingDir %A_ScriptDir%
@@ -180,7 +181,6 @@ Loop
 	{
 		
 	}
-	
 	GuiControl ,, Edittext, LoopCycles-Start: %counter%
 }
 Return
@@ -211,9 +211,10 @@ IF (checkbox1 = 1)
 				Sleep, % ran(50, 150)
 				Send, {%keytopush% Up}
 				Sleep, % ran(50, 150)
-				MouseMovement(MouseMovementArray)
+				mousescript := MouseMovement(MouseMovementArray)
 				Array[index1].CargoStatus := 0
 				counter2+= 1
+				writeInLog(value4.Minername, mousescript, counter2)
 				GuiControl ,, Edittext2, LOOTS !!!!: %counter2%
 			}
 		}
@@ -251,9 +252,10 @@ If ( checkbox2 = 0)
 			Sleep, % ran(50, 150)
 			Send, {%keytopush% Up}
 			Sleep, % ran(50, 150)
-			MouseMovement(MouseMovementArray)
+			mousescript := MouseMovement(MouseMovementArray)
 			Array[index3].CargoStatus := 0
 			counter2+= 1
+			writeInLog(value4.Minername, mousescript, counter2)
 			GuiControl ,, Edittext2, LOOTS !!!!: %counter2%
 		}
 	}
@@ -269,9 +271,10 @@ else
 		Sleep, % ran(50, 150)
 		Send, {%keytopush% Up}
 		Sleep, % ran(50, 150)
-		MouseMovement(MouseMovementArray)
+		mousescript := MouseMovement(MouseMovementArray)
 		Array[index4].CargoStatus := 0
 		counter2+= 1
+		writeInLog(value4.Minername, mousescript, counter2)
 		GuiControl ,, Edittext2, LOOTS !!!!: %counter2%
 	}
 }
@@ -286,5 +289,11 @@ MouseMovement(MouseMovementArray)
 	mousescript := MouseMovementArray[randomscript]
 	GuiControl ,, Edittext3, MousScript: %mousescript%
 	RunWait, %mousescript%, MMS
-	Return
+	return mousescript
+}
+
+
+writeInLog(minername, mousescript, counter){
+		FormatTime, TimeString, T12, yyyy-MM-dd, hh:mm:ss tt
+		FileAppend, `t %counter%. `t %TimeString% || %minername% || %mousescript% `n, MinerLog.txt
 }
