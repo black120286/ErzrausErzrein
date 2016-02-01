@@ -1,4 +1,20 @@
 
+
+#NoEnv
+SetWorkingDir %A_ScriptDir%
+CoordMode, Mouse, Window
+SendMode Input
+#Include Class_LV_Colors.ahk
+#SingleInstance Force
+SetTitleMatchMode 2
+DetectHiddenWindows On
+#WinActivateForce
+SetControlDelay 1
+SetWinDelay 0
+SetKeyDelay -1
+SetMouseDelay -1
+SetBatchLines -1
+
 Class Miner {
 	Ident :=
 	MinerName := 
@@ -10,11 +26,11 @@ Class Miner {
 	CargoPoint2_Y1 := 
 	CargoPoint2_X2 := 
 	CargoPoint2_Y2 := 
-	CargoStatus:= 1
+	CargoStatus:= 0
 	ForegroundKey :=
-	Button1Status :=
-	Button2Status :=
-	Button3Status :=
+	Button1Status := 
+	Button2Status := 
+	Button3Status := 
 	Button1Point1_X :=
 	Button1Point1_Y :=
 	Button1Point2_X :=
@@ -100,20 +116,21 @@ Loop, MMS\*.*
 
 
 
+Gui, Font, s10, Verdana
+gui, add, Button, x30 y530 w100 h50 gStart, Start
+gui, add, Button, x30 y530 w100 h50 gStart2, Start Again
+gui, add, Button, x30 y600 w100 h50 gWorking, STOP IT !
+Gui, Add, Listview,x10 y10 r20 w400 Grid -ReadOnly vVLV hwndHLV, MinerName|CargoStatus|Button-1|Button-2|Button-3
+gui, add, Button, x30 y670 w100 h50 gLootnow, Lootnow
+gui, add, checkbox, x140 y550 vcheckbox1, Looting
+gui, add, checkbox, x140 y690 vcheckbox2, Loot regardsless of cargo
+Gui, Add, Text, r4 x320 y500, % "Loot at"
+Gui, Add, Text, x320 y500 w200 vEdit gLetter, 40
+Gui, Add, Edit, x320 y530 w150 vEdittext, LoopCycles-Start: 0
+Gui, Add, Edit, x320 y560 w150 vEdittext2, LOOTS !!!!: 0
+Gui, Add, Edit, x320 y590 w150 vEdittext3, MouseScript:
+gui, add, checkbox, x320 y460 vcheckbox3, Erst nach 2tem Cycle looten
 
-gui, add, Button, x30 y230 w100 h50 gStart, Start
-gui, add, Button, x30 y230 w100 h50 gStart2, Start Again
-gui, add, Button, x30 y300 w100 h50 gWorking, STOP IT !
-Gui, Add, Listview,x10 y10 r10 w250 Grid vMyListView, MinerName|CargoStatus|B1|B2|B3
-gui, add, Button, x30 y370 w100 h50 gLootnow, Lootnow
-gui, add, checkbox, x140 y250 vcheckbox1, Looting
-gui, add, checkbox, x140 y390 vcheckbox2, Loot regardsless of cargo
-Gui, Add, Text, r4 x320 y100, % "Loot at"
-Gui, Add, Text, x320 y100 w200 vEdit gLetter, 40
-Gui, Add, Edit, x320 y130 w150 vEdittext, LoopCycles-Start: 0
-Gui, Add, Edit, x320 y160 w150 vEdittext2, LOOTS !!!!: 0
-Gui, Add, Edit, x320 y190 w150 vEdittext3, MouseScript:
-gui, add, checkbox, x320 y60 vcheckbox3, Erst nach 2tem Cycle looten
 GuiControl, hide, Start Again
 
 Hotkey, Home, Working
@@ -126,16 +143,18 @@ FileAppend, -------  New Session started: %TimeString2% ------- `n, MinerLog.txt
 for index, value in Array
 	LV_Add("", value.MinerName, value.CargoStatus)
 
+Loop, % LV_GetCount("Column")
+   LV_ModifyCol(A_Index, "AutoHdr")
 
-Gui, Show,w500 h800
+LV_Colors.OnMessage()
+
+Gui, Show,w600 h800
+Gui, Show, , ListView & Colors
 SetTimer, Update, 500
 Settimer, Loottimer, 3500
 counter3 := 0
 counter2 := 0
 counter := 0
-
-
-
 
 Up::GuiControl, , checkbox1, 1
 Down::GuiControl, , checkbox1, 0
@@ -147,6 +166,8 @@ return
 Update:
 For index6, value6 in Array
 {	
+	GuiControl, -Redraw, %HLV%
+	LV_Colors.Attach(HLV, 1, 0, 0)
 	if(value6.CargoStatus = 0)
 		CargoStatus := "leer"
 	else if (value6.CargoStatus = 1)
@@ -154,8 +175,46 @@ For index6, value6 in Array
 	else if (value6.CargoStatus = 2)
 		CargoStatus := "Fast voll"
 	else if (value6.CargoStatus = 3)
-		CargoStatus := "am looten"	
+		CargoStatus := "am looten"
+		
+	if(value6.Button1Status >= 10)
+	{	
+		LV_Colors.Cell(HLV, A_Index, 3, 0xFF0000, 0x000000)
+	}
+	else if (value6.Button1Status >=0)
+	{	
+		LV_Colors.Cell(HLV, A_Index, 3, 0x00FF00, 0x000000)
+	}
+	else
+	{	
+		LV_Colors.Cell(HLV, A_Index, 3, 0xFFFFFF, 0x000000)
+	}
+	if(value6.Button2Status >= 10)
+	{	
+		LV_Colors.Cell(HLV, A_Index, 4, 0xFF0000, 0x000000)
+	}
+	else if (value6.Button2Status >=0)
+	{	
+		LV_Colors.Cell(HLV, A_Index, 4, 0x00FF00, 0x000000)
+	}
+	else
+	{	
+		LV_Colors.Cell(HLV, A_Index, 4, 0xFFFFFF, 0x000000)
+	}
+	if(value6.Button3Status >= 10)
+	{	
+		LV_Colors.Cell(HLV, A_Index, 5, 0xFF0000, 0x000000)
+	}
+	else if (value6.Button3Status >=0)
+	{	
+		LV_Colors.Cell(HLV, A_Index, 5, 0x00FF00, 0x000000)
+	}
+	else
+	{	
+		LV_Colors.Cell(HLV, A_Index, 5, 0xFFFFFF, 0x000000)
+	}
 	LV_Modify(index6, "", value6.MinerName, CargoStatus, value6.Button1Status, value6.Button2Status, value6.Button3Status)
+	GuiControl, +Redraw, %HLV%
 }
 Return
 
@@ -165,22 +224,6 @@ GuiClose:
 ExitApp
 
 Left::exitapp
-
-#NoEnv
-SetWorkingDir %A_ScriptDir%
-CoordMode, Mouse, Window
-SendMode Input
-#SingleInstance Force
-SetTitleMatchMode 2
-DetectHiddenWindows On
-#WinActivateForce
-SetControlDelay 1
-SetWinDelay 0
-SetKeyDelay -1
-SetMouseDelay -1
-SetBatchLines -1
-
-
 
 
 
@@ -221,7 +264,7 @@ Loop
 				}
 				else if ErrorLevel = 1
 				{
-					Array[ident].CargoStatus :=1
+					Array[ident].CargoStatus :=0
 				}
 			}
 		
@@ -378,12 +421,12 @@ checkButtonsOfMiner(ident, buttonnumber, cord1, cord2, cord3, cord4)
 {	
 	if(checkButtonIsActive(cord1, cord2, cord3, cord4))
 	{
-		setButtonStatus(ident, buttonnumber, "On")
+		setButtonStatus(ident, buttonnumber, 0)
 		return
 	}
 	else if(checkButtonIsInactive(cord1, cord2, cord3, cord4))
 	{
-		setButtonStatus(ident, buttonnumber, "Off")
+		setButtonStatus(ident, buttonnumber, 1)
 		return
 	}
 	return
@@ -393,21 +436,41 @@ checkButtonsOfMiner(ident, buttonnumber, cord1, cord2, cord3, cord4)
 setButtonStatus(ident, number, status)
 {
 	global Array
-	if(number = 1)
-	{
-		Array[ident].Button1Status := status
-		return
-	}
-	else if (number = 2) 
-	{
-		Array[ident].Button2Status := status
-		return
-	}
+	if (status = 0){
+		if(number = 1)
+		{
+			Array[ident].Button1Status := status
+			return
+		}
+		else if (number = 2) 
+		{
+			Array[ident].Button2Status := status
+			return
+		}
 	
-	else if (number = 3)
-	{
-		Array[ident].Button3Status := status
-		return
+		else if (number = 3)
+		{
+			Array[ident].Button3Status := status
+			return
+		}
+	}
+	else if (status = 1){
+		if(number = 1)
+		{
+			Array[ident].Button1Status += status
+			return
+		}
+		else if (number = 2) 
+		{
+			Array[ident].Button2Status += status
+			return
+		}
+	
+		else if (number = 3)
+		{
+			Array[ident].Button3Status += status
+			return
+		}
 	}
 	return
 }
