@@ -128,7 +128,7 @@ for index, value in Array
 
 
 Gui, Show,w500 h800
-SetTimer, Update, 500
+SetTimer, Update, 1500
 Settimer, Loottimer, 3500
 counter2 := 0
 counter := 0
@@ -409,6 +409,4 @@ setButtonStatus(ident, number, status)
 		return
 	}
 	return
-	
-	
 }

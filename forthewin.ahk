@@ -128,7 +128,7 @@ for index, value in Array
 
 
 Gui, Show,w500 h800
-SetTimer, Update, 1500
+SetTimer, Update, 500
 Settimer, Loottimer, 3500
 counter2 := 0
 counter := 0
@@ -146,9 +146,6 @@ return
 Update:
 For index6, value6 in Array
 {	
-	checkButtonsOfMiner(index6, 1, value6.Button1Point1_X, value6.Button1Point1_Y, value6.Button1Point2_X, value6.Button1Point2_Y)
-	checkButtonsOfMiner(index6, 2, value6.Button2Point1_X, value6.Button2Point1_Y, value6.Button2Point2_X, value6.Button2Point2_Y)
-	checkButtonsOfMiner(index6, 3, value6.Button3Point1_X, value6.Button3Point1_Y, value6.Button3Point2_X, value6.Button3Point2_Y)
 	if(value6.CargoStatus = 0)
 		CargoStatus := "leer"
 	else if (value6.CargoStatus = 1)
@@ -203,6 +200,9 @@ Loop
 			x2 := value.CargoPoint2_X2
 			y2 := value.CargoPoint2_Y2
 			ident := index5
+			checkButtonsOfMiner(index5, 1, value6.Button1Point1_X, value5.Button1Point1_Y, value5.Button1Point2_X, value5.Button1Point2_Y)
+			checkButtonsOfMiner(index5, 2, value6.Button2Point1_X, value5.Button2Point1_Y, value5.Button2Point2_X, value5.Button2Point2_Y)
+			checkButtonsOfMiner(index5, 3, value6.Button3Point1_X, value5.Button3Point1_Y, value5.Button3Point2_X, value5.Button3Point2_Y)
 
 			PixelSearch, FoundX, FoundY, value5.CargoPoint2_X1, value5.CargoPoint2_Y1, value5.CargoPoint2_X2, value5.CargoPoint2_Y2, 0x02495D, 10, Fast RGB
 			;MsgBox, Chargo FastVoll? Ident = %ident% x1 = %x1%  || y1 = %y1%  || x2 = %x2% || y2 = %y2% || Ergebnis = %ErrorLevel%
