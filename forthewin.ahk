@@ -10,7 +10,7 @@ Class Miner {
 	CargoPoint2_Y1 := 
 	CargoPoint2_X2 := 
 	CargoPoint2_Y2 := 
-	CargoStatus:= 0
+	CargoStatus:= 1
 	ForegroundKey :=
 	Button1Status :=
 	Button2Status :=
@@ -130,6 +130,7 @@ for index, value in Array
 Gui, Show,w500 h800
 SetTimer, Update, 500
 Settimer, Loottimer, 3500
+counter3 := 0
 counter2 := 0
 counter := 0
 
@@ -220,7 +221,7 @@ Loop
 				}
 				else if ErrorLevel = 1
 				{
-					Array[ident].CargoStatus :=0
+					Array[ident].CargoStatus :=1
 				}
 			}
 		
@@ -248,12 +249,12 @@ IF (checkbox1 = 1)
 	
 	for index1, value2 in Array
 	{	
-		
+		counter3 += 1
 		Settimer, Loottimer, Off
 		If (value2.CargoStatus- checkbox3) > 0
 		{	
 			if(checkbox1 = 1)
-			{
+			{	
 				Sleep, % ran(800, 2050)
 				keytopush := value2.ForegroundKey
 				Send, {%keytopush% Down}
